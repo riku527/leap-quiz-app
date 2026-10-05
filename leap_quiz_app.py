@@ -25,12 +25,12 @@ def load_vocab_data():
 
 vocab_db = load_vocab_data()
 
-# CSS styling with top padding fix so title is never hidden behind Streamlit header
+# CSS styling for mobile & desktop
 st.markdown("""
 <style>
-    /* Ensure enough top padding so header bar does NOT cover the title */
+    /* Ensure top padding so Streamlit header bar never covers title */
     .block-container {
-        padding-top: 4.5rem !important;
+        padding-top: 4.2rem !important;
         padding-bottom: 2.5rem !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
@@ -45,7 +45,7 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin-top: 0.5rem;
+        margin-top: 0.2rem;
         margin-bottom: 0.2rem;
     }
     .sub-title {
@@ -55,13 +55,13 @@ st.markdown("""
         margin-bottom: 1.2rem;
     }
 
-    /* Status badge for range and settings */
+    /* Settings summary badge */
     .setting-badge-container {
         display: flex;
         justify-content: center;
         gap: 6px;
         flex-wrap: wrap;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.0rem;
     }
     .setting-badge {
         background-color: #F1F5F9;
@@ -73,12 +73,12 @@ st.markdown("""
         font-weight: 600;
     }
 
-    /* Question Card Box */
+    /* Question Card Box - Tight, balanced padding */
     .card-box {
         background: linear-gradient(145deg, #ffffff, #f8fafc);
         border: 2px solid #E2E8F0;
         border-radius: 16px;
-        padding: clamp(18px, 4vw, 28px);
+        padding: 16px 20px;
         margin-bottom: 16px;
         text-align: center;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
@@ -96,15 +96,16 @@ st.markdown("""
         font-size: clamp(1.6rem, 6vw, 2.4rem);
         font-weight: 800;
         color: #0F172A;
-        margin: 10px 0 4px 0;
+        margin: 8px 0 4px 0;
         word-break: break-word;
-        line-height: 1.3;
+        line-height: 1.25;
     }
     .ipa-text {
         font-size: clamp(0.9rem, 3vw, 1.1rem);
         color: #475569;
         font-family: serif, sans-serif;
-        margin-bottom: 10px;
+        margin-top: 2px;
+        margin-bottom: 4px;
     }
     .mode-badge {
         font-size: clamp(0.75rem, 2vw, 0.85rem);
@@ -116,7 +117,7 @@ st.markdown("""
         display: inline-block;
     }
 
-    /* Touch-friendly buttons for Mobile & PC */
+    /* Buttons */
     .stButton > button {
         border-radius: 12px !important;
         font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
@@ -126,7 +127,7 @@ st.markdown("""
         transition: all 0.15s ease-in-out !important;
     }
 
-    /* Etymology & Trivia Box */
+    /* Etymology Box */
     .etym-box {
         background-color: #FEF3C7;
         border-left: 4px solid #F59E0B;
@@ -138,7 +139,7 @@ st.markdown("""
         text-align: left;
     }
 
-    /* Score banner */
+    /* Score Banner */
     .score-banner {
         background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
         color: white;
@@ -151,30 +152,31 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Helper function for Speech Synthesis (Audio Playback)
+# Audio button helper
 def render_audio_button(text):
     js_code = f"""
-    <button onclick="
-        const msg = new SpeechSynthesisUtterance('{text}');
-        msg.lang = 'en-US';
-        msg.rate = 0.9;
-        window.speechSynthesis.speak(msg);
-    " style="
-        background-color: #3B82F6;
-        color: white;
-        border: none;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 6px;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-    ">
-        🔊 発音を聞く
-    </button>
+    <div style="display: flex; justify-content: center; margin-top: 4px;">
+        <button onclick="
+            const msg = new SpeechSynthesisUtterance('{text}');
+            msg.lang = 'en-US';
+            msg.rate = 0.9;
+            window.speechSynthesis.speak(msg);
+        " style="
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        ">
+            🔊 発音を聞く
+        </button>
+    </div>
     """
     st.components.v1.html(js_code, height=45)
 
@@ -253,7 +255,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
             "en": info["en"],
             "ja": info["ja"],
             "ipa": info.get("ipa", "[ /.../ ]"),
-            "etymology": info.get("etymology", "語源: 特別な接頭辞・語根による基本構成単語"),
+            "etymology": info.get("etymology", "語源: 基本構成単語"),
             "prompt": prompt,
             "correct_ans": correct_ans,
             "options": options,
@@ -265,7 +267,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
 if "starred_words" not in st.session_state:
     st.session_state.starred_words = set()
 
-# --- Header ---
+# Header
 st.markdown("<div class='main-title'>必携 英単語 LEAP</div>", unsafe_allow_html=True)
 st.markdown("<div class='sub-title'>🎯 4択選択式 英単語クイズ & 語源・音声対応</div>", unsafe_allow_html=True)
 
@@ -284,11 +286,9 @@ direction_option = st.sidebar.radio(
     ["英語 ➔ 日本語", "日本語 ➔ 英語", "混合（英➔日・日➔英）"]
 )
 
-# Feature Toggles
 st.sidebar.markdown("---")
-st.sidebar.subheader("👁️ 表示オプション")
+st.sidebar.subheader("👁️ 表示・復習オプション")
 show_ipa = st.sidebar.checkbox("🔤 発音記号を表示する", value=True)
-
 filter_starred = st.sidebar.checkbox(f"⭐ 要復習（スター選択中 {len(st.session_state.starred_words)}件）のみ", value=False)
 
 if st.sidebar.button("🔄 クイズを再スタート / 設定反映", use_container_width=True):
@@ -299,7 +299,7 @@ if st.sidebar.button("🔄 クイズを再スタート / 設定反映", use_cont
     st.session_state.answered = False
     st.rerun()
 
-# Initialize Session State for Quiz
+# Initialize Session State
 if "quiz_items" not in st.session_state:
     st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
     st.session_state.current_idx = 0
@@ -314,7 +314,7 @@ if total_questions == 0:
     st.warning(f"指定された範囲 (No.{start_no} ～ No.{end_no}) に該当する単語データがありません。設定を確認してください。")
     st.stop()
 
-# Settings Summary Badge
+# Current settings badge
 st.markdown(f"""
 <div class='setting-badge-container'>
     <span class='setting-badge'>範囲: No.{start_no} ～ No.{end_no}</span>
@@ -335,7 +335,6 @@ if current_idx >= total_questions:
     </div>
     """, unsafe_allow_html=True)
     
-    # Collect missed questions
     wrong_item_nos = []
     for idx, item in enumerate(quiz_items):
         if not st.session_state.user_answers.get(idx, {}).get("is_correct", False):
@@ -387,7 +386,7 @@ else:
 
     # Star Button Toggle Top Bar
     is_starred = item["no"] in st.session_state.starred_words
-    star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける"
+    star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける (要復習)"
     
     col_star1, col_star2 = st.columns([3, 1])
     with col_star2:
@@ -398,7 +397,10 @@ else:
                 st.session_state.starred_words.add(item["no"])
             st.rerun()
 
-    # Question Card
+    # IPA HTML rendered INSIDE the card box
+    ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and item["mode"] == "英語 ➔ 日本語") else ""
+
+    # Question Card Box (Card box contains q-number, mode-badge, q-prompt AND ipa_display_html cleanly inside)
     st.markdown(f"""
     <div class='card-box'>
         <div style='display: flex; justify-content: space-between; align-items: center;'>
@@ -406,14 +408,11 @@ else:
             <span class='mode-badge'>{item['mode']}</span>
         </div>
         <div class='q-prompt'>{item['prompt']}</div>
+        {ipa_display_html}
     </div>
     """, unsafe_allow_html=True)
 
-    # Display IPA if enabled & Mode is EN -> JA
-    if show_ipa and item["mode"] == "英語 ➔ 日本語":
-        st.markdown(f"<div style='text-align: center; margin-top:-10px; margin-bottom:10px;' class='ipa-text'>発音: [ {item['ipa']} ]</div>", unsafe_allow_html=True)
-
-    # Render Audio Playback Button for EN prompt
+    # Audio playback button
     if item["mode"] == "英語 ➔ 日本語":
         render_audio_button(item["prompt"])
 
