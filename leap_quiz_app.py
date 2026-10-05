@@ -25,7 +25,7 @@ def load_vocab_data():
 
 vocab_db = load_vocab_data()
 
-# CSS styling for mobile & desktop
+# CSS styling for mobile & desktop UI
 st.markdown("""
 <style>
     /* Ensure top padding so Streamlit header bar never covers title */
@@ -73,7 +73,7 @@ st.markdown("""
         font-weight: 600;
     }
 
-    /* Question Card Box - Tight, balanced padding */
+    /* Question Card Box */
     .card-box {
         background: linear-gradient(145deg, #ffffff, #f8fafc);
         border: 2px solid #E2E8F0;
@@ -125,18 +125,6 @@ st.markdown("""
         padding: 12px 16px !important;
         min-height: 52px !important;
         transition: all 0.15s ease-in-out !important;
-    }
-
-    /* Etymology Box */
-    .etym-box {
-        background-color: #FEF3C7;
-        border-left: 4px solid #F59E0B;
-        color: #78350F;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        margin-top: 10px;
-        text-align: left;
     }
 
     /* Score Banner */
@@ -254,8 +242,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
             "no": no,
             "en": info["en"],
             "ja": info["ja"],
-            "ipa": info.get("ipa", "[ /.../ ]"),
-            "etymology": info.get("etymology", "語源: 基本構成単語"),
+            "ipa": info.get("ipa", ""),
             "prompt": prompt,
             "correct_ans": correct_ans,
             "options": options,
@@ -269,7 +256,7 @@ if "starred_words" not in st.session_state:
 
 # Header
 st.markdown("<div class='main-title'>必携 英単語 LEAP</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>🎯 4択選択式 英単語クイズ & 語源・音声対応</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>🎯 4択選択式 英単語クイズ & 発音・音声対応</div>", unsafe_allow_html=True)
 
 if not vocab_db:
     st.error("⚠️ 単語データ (leap_words.json) が見つかりません。")
@@ -361,7 +348,7 @@ if current_idx >= total_questions:
                 st.rerun()
 
     st.markdown("---")
-    st.subheader("📊 回答結果・語源解説一覧")
+    st.subheader("📊 回答結果一覧")
     for idx, item in enumerate(quiz_items):
         is_correct = st.session_state.user_answers.get(idx, {}).get("is_correct", False)
         user_choice = st.session_state.user_answers.get(idx, {}).get("choice", "未回答")
@@ -371,9 +358,8 @@ if current_idx >= total_questions:
             st.write(f"・**問題**: {item['prompt']}")
             st.write(f"・**あなたの回答**: {user_choice}")
             st.write(f"・**正解**: {item['correct_ans']}")
-            if show_ipa:
-                st.write(f"・**発音記号**: {item['ipa']}")
-            st.write(f"・**語源・雑学**: {item['etymology']}")
+            if show_ipa and item['ipa']:
+                st.write(f"・**発音記号**: [ {item['ipa']} ]")
 
 else:
     # Quiz In-Progress Screen
@@ -398,9 +384,9 @@ else:
             st.rerun()
 
     # IPA HTML rendered INSIDE the card box
-    ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and item["mode"] == "英語 ➔ 日本語") else ""
+    ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and item["ipa"] and item["mode"] == "英語 ➔ 日本語") else ""
 
-    # Question Card Box (Card box contains q-number, mode-badge, q-prompt AND ipa_display_html cleanly inside)
+    # Question Card Box
     st.markdown(f"""
     <div class='card-box'>
         <div style='display: flex; justify-content: space-between; align-items: center;'>
@@ -442,16 +428,11 @@ else:
         else:
             st.error(f"❌ **不正解...** 正解は **「 {item['correct_ans']} 」** です。")
             
-        with st.info("📖 **単語解説 & 語源**"):
+        with st.info("📖 **単語解説**"):
             st.write(f"・**単語 (No.{item['no']})**: **{item['en']}**")
-            if show_ipa:
-                st.write(f"・**発音記号**: {item['ipa']}")
+            if show_ipa and item['ipa']:
+                st.write(f"・**発音記号**: [ {item['ipa']} ]")
             st.write(f"・**意味**: {item['ja']}")
-            st.markdown(f"""
-            <div class='etym-box'>
-                💡 <b>語源・成り立ち・雑学:</b><br>{item['etymology']}
-            </div>
-            """, unsafe_allow_html=True)
 
         if st.button("次の問題へ ➔", type="primary", use_container_width=True):
             st.session_state.current_idx += 1
