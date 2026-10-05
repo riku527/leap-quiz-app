@@ -387,7 +387,7 @@ else:
 
     # Star Button Toggle Top Bar
     is_starred = item["no"] in st.session_state.starred_words
-    star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける (要復習)"
+    star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける"
     
     col_star1, col_star2 = st.columns([3, 1])
     with col_star2:
