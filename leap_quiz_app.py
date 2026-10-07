@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import json
 import random
@@ -461,4 +460,3 @@ else:
             st.session_state.current_idx += 1
             st.session_state.answered = False
             st.rerun()
-```
