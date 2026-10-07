@@ -1,15 +1,41 @@
+```python
 import streamlit as st
 import json
 import random
 import os
 
-# Set Streamlit Page Configuration
+# Streamlit Page Configuration
 st.set_page_config(
     page_title="LEAP 英単語 4択クイズ",
     page_icon="🎯",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
+
+# Persistent Star Storage Helper
+STAR_FILE = "starred_words.json"
+
+def load_starred_words():
+    starred = set()
+    if os.path.exists(STAR_FILE):
+        try:
+            with open(STAR_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                starred = set(data.get("starred", []))
+        except Exception:
+            pass
+    return starred
+
+def save_starred_words(starred_set):
+    try:
+        with open(STAR_FILE, "w", encoding="utf-8") as f:
+            json.dump({"starred": list(starred_set)}, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+# Initialize Starred List with Persistence
+if "starred_words" not in st.session_state:
+    st.session_state.starred_words = load_starred_words()
 
 # Load Vocabulary Data from JSON
 @st.cache_data
@@ -25,7 +51,7 @@ def load_vocab_data():
 
 vocab_db = load_vocab_data()
 
-# CSS styling for mobile & desktop UI
+# CSS styling for mobile & desktop
 st.markdown("""
 <style>
     /* Ensure top padding so Streamlit header bar never covers title */
@@ -242,7 +268,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
             "no": no,
             "en": info["en"],
             "ja": info["ja"],
-            "ipa": info.get("ipa", ""),
+            "ipa": info.get("ipa", "[ /.../ ]"),
             "prompt": prompt,
             "correct_ans": correct_ans,
             "options": options,
@@ -250,13 +276,9 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
         })
     return items
 
-# Initialize Starred List
-if "starred_words" not in st.session_state:
-    st.session_state.starred_words = set()
-
 # Header
 st.markdown("<div class='main-title'>必携 英単語 LEAP</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>🎯 4択選択式 英単語クイズ & 発音・音声対応</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>🎯 4択選択式 英単語クイズ & 音声対応</div>", unsafe_allow_html=True)
 
 if not vocab_db:
     st.error("⚠️ 単語データ (leap_words.json) が見つかりません。")
@@ -301,7 +323,7 @@ if total_questions == 0:
     st.warning(f"指定された範囲 (No.{start_no} ～ No.{end_no}) に該当する単語データがありません。設定を確認してください。")
     st.stop()
 
-# Current settings badge
+# Settings summary badge
 st.markdown(f"""
 <div class='setting-badge-container'>
     <span class='setting-badge'>範囲: No.{start_no} ～ No.{end_no}</span>
@@ -358,8 +380,8 @@ if current_idx >= total_questions:
             st.write(f"・**問題**: {item['prompt']}")
             st.write(f"・**あなたの回答**: {user_choice}")
             st.write(f"・**正解**: {item['correct_ans']}")
-            if show_ipa and item['ipa']:
-                st.write(f"・**発音記号**: [ {item['ipa']} ]")
+            if show_ipa:
+                st.write(f"・**発音記号**: {item['ipa']}")
 
 else:
     # Quiz In-Progress Screen
@@ -381,10 +403,11 @@ else:
                 st.session_state.starred_words.remove(item["no"])
             else:
                 st.session_state.starred_words.add(item["no"])
+            save_starred_words(st.session_state.starred_words)
             st.rerun()
 
     # IPA HTML rendered INSIDE the card box
-    ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and item["ipa"] and item["mode"] == "英語 ➔ 日本語") else ""
+    ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and item["mode"] == "英語 ➔ 日本語") else ""
 
     # Question Card Box
     st.markdown(f"""
@@ -430,11 +453,12 @@ else:
             
         with st.info("📖 **単語解説**"):
             st.write(f"・**単語 (No.{item['no']})**: **{item['en']}**")
-            if show_ipa and item['ipa']:
-                st.write(f"・**発音記号**: [ {item['ipa']} ]")
+            if show_ipa:
+                st.write(f"・**発音記号**: {item['ipa']}")
             st.write(f"・**意味**: {item['ja']}")
 
         if st.button("次の問題へ ➔", type="primary", use_container_width=True):
             st.session_state.current_idx += 1
             st.session_state.answered = False
             st.rerun()
+```
