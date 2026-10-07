@@ -307,8 +307,8 @@ def get_similar_distractors(target_no, mode_type, all_vocab, num_distractors=3):
         total_score = proximity_score + overlap_score + (common_chars * 3) + random.uniform(0, 10)
         scored_candidates.append((total_score, cand_no))
         
-    scored_candidates.sort(key=lambda x: x, reverse=True)
-    selected_nos = [item for item in scored_candidates[:num_distractors * 2]]
+    scored_candidates.sort(key=lambda x: x[0], reverse=True)
+    selected_nos = [item[1] for item in scored_candidates[:num_distractors * 2]]
     distractor_nos = random.sample(selected_nos, min(num_distractors, len(selected_nos)))
     
     if mode_type == "英語 ➔ 日本語":
