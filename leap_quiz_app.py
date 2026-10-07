@@ -519,7 +519,7 @@ with tab_quiz:
             is_starred = item["no"] in st.session_state.starred_words
             star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける (要復習)"
             
-            col_star1, col_star2 = st.columns()
+            col_star1, col_star2 = st.columns([3, 1])
             with col_star2:
                 if st.button(star_label, key=f"star_btn_{item['no']}"):
                     if is_starred:
