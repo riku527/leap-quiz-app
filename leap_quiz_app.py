@@ -535,7 +535,7 @@ with tab_quiz:
             is_starred = item["no"] in st.session_state.starred_words
             star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける (要復習)"
             
-            col_star1, col_star2 = st.columns([3, 1])
+            col_star1, col_star2 = st.columns(2)
             with col_star2:
                 if st.button(star_label, key=f"star_btn_{item['no']}"):
                     if is_starred:
@@ -707,15 +707,15 @@ with tab_analytics:
         
         # Sort words by wrong count descending
         sorted_mistakes = sorted(
-            [item for item in mistakes_data.items() if item["wrong"] > 0],
-            key=lambda x: (x["wrong"], x["wrong"] / x["total"]),
+            [(word_no, stats) for word_no, stats in mistakes_data.items() if stats.get("wrong", 0) > 0],
+            key=lambda x: (x[1]["wrong"], x[1]["wrong"] / x[1]["total"] if x[1]["total"] > 0 else 0),
             reverse=True
         )
         
         if not sorted_mistakes:
             st.success("🎉 素晴らしい！現在、間違えたままになっている苦手単語はありません。")
         else:
-            top_wrong_nos = [item[0] for item in sorted_mistakes[:10]]
+            top_wrong_nos = [word_no for word_no, stats in sorted_mistakes[:10]]
             
             # Button to start quiz with top worst words directly
             if st.button(f"🔥 苦手ワースト単語（上位{len(top_wrong_nos)}問）を集中テストする", type="primary", use_container_width=True):
