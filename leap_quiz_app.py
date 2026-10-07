@@ -162,9 +162,10 @@ st.markdown("""
         background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
         border: 2px solid #3B82F6;
         border-radius: 16px;
-        padding: 16px;
+        padding: 20px;
         margin-bottom: 20px;
         text-align: center;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
     }
 
     /* Question Card Box */
@@ -393,26 +394,35 @@ if st.sidebar.button("🔄 クイズを再スタート / 設定反映", use_cont
     st.session_state.current_idx = 0
     st.session_state.score = 0
     st.session_state.user_answers = {}
+    st.session_state.quiz_started = True
     st.rerun()
 
 # --- Tab Layout: Quiz vs Analytics ---
 tab_quiz, tab_analytics = st.tabs(["🎯 クイズを解く", "📊 苦手分析・統計"])
 
 with tab_quiz:
-    # Saved Progress Check for Resume Feature
+    # Check for Saved Progress File on Disk
     saved_progress = load_progress()
 
-    # Resume Banner on Home if saved progress exists
+    # If quiz has not been loaded into session_state yet AND saved progress exists:
     if "quiz_items" not in st.session_state and saved_progress:
         saved_items = saved_progress.get("quiz_items", [])
         saved_idx = saved_progress.get("current_idx", 0)
+        saved_score = saved_progress.get("score", 0)
         saved_total = len(saved_items)
+        saved_settings = saved_progress.get("settings", {})
+        saved_mode = saved_settings.get("direction_option", direction_option)
+        saved_range = f"No.{saved_settings.get('start_no', start_no)} ～ No.{saved_settings.get('end_no', end_no)}"
         
         if 0 <= saved_idx < saved_total:
             st.markdown(f"""
             <div class='resume-box'>
-                <h3 style='margin: 0 0 8px 0; color: #1E3A8A;'>⏯️ 前回の解き途中データがあります</h3>
-                <p style='margin: 0; color: #4B5563;'>進捗: <b>第 {saved_idx + 1} 問 / 全 {saved_total} 問</b></p>
+                <h3 style='margin: 0 0 10px 0; color: #1E3A8A;'>⏯️ 前回の解き途中データがあります</h3>
+                <div style='text-align: left; background: white; padding: 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.95rem; color: #334155;'>
+                    ・<b>出題モード</b>: {saved_mode}<br>
+                    ・<b>出題範囲</b>: {saved_range}<br>
+                    ・<b>現在の進捗</b>: 第 <b>{saved_idx + 1}</b> 問 / 全 {saved_total} 問 (現在 <b>{saved_score}</b> 問正解)
+                </div>
             </div>
             """, unsafe_allow_html=True)
             
@@ -421,24 +431,30 @@ with tab_quiz:
                 if st.button("🚀 前回の途中から始める", type="primary", use_container_width=True):
                     st.session_state.quiz_items = saved_items
                     st.session_state.current_idx = saved_idx
-                    st.session_state.score = saved_progress.get("score", 0)
+                    st.session_state.score = saved_score
                     st.session_state.user_answers = {int(k): v for k, v in saved_progress.get("user_answers", {}).items()}
+                    st.session_state.quiz_started = True
                     st.rerun()
             with col_res2:
-                if st.button("🆕 新しくスタートする", use_container_width=True):
+                if st.button("🆕 最初からやり直す", use_container_width=True):
                     clear_progress()
                     st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
                     st.session_state.current_idx = 0
                     st.session_state.score = 0
                     st.session_state.user_answers = {}
+                    st.session_state.quiz_started = True
                     st.rerun()
+            
+            # STOP here so Streamlit waits for user selection instead of auto-initializing a new quiz
+            st.stop()
 
-    # Initialize Session State
+    # Default Session State Initialization if no saved progress or user opted for new start
     if "quiz_items" not in st.session_state:
         st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
         st.session_state.current_idx = 0
         st.session_state.score = 0
         st.session_state.user_answers = {}
+        st.session_state.quiz_started = True
 
     quiz_items = st.session_state.quiz_items
     total_questions = len(quiz_items)
@@ -574,12 +590,19 @@ with tab_quiz:
                         "is_correct": is_correct
                     }
                     
-                    # Save progress for resume feature
+                    # Save progress for resume feature with full settings metadata
                     progress_data = {
                         "quiz_items": st.session_state.quiz_items,
                         "current_idx": st.session_state.current_idx,
                         "score": st.session_state.score,
-                        "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()}
+                        "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()},
+                        "settings": {
+                            "start_no": start_no,
+                            "end_no": end_no,
+                            "order_option": order_option,
+                            "direction_option": direction_option,
+                            "filter_starred": filter_starred
+                        }
                     }
                     save_progress(progress_data)
                     st.rerun()
@@ -608,7 +631,14 @@ with tab_quiz:
                             "quiz_items": st.session_state.quiz_items,
                             "current_idx": st.session_state.current_idx,
                             "score": st.session_state.score,
-                            "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()}
+                            "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()},
+                            "settings": {
+                                "start_no": start_no,
+                                "end_no": end_no,
+                                "order_option": order_option,
+                                "direction_option": direction_option,
+                                "filter_starred": filter_starred
+                            }
                         }
                         save_progress(progress_data)
                         st.rerun()
@@ -622,7 +652,14 @@ with tab_quiz:
                             "quiz_items": st.session_state.quiz_items,
                             "current_idx": st.session_state.current_idx,
                             "score": st.session_state.score,
-                            "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()}
+                            "user_answers": {str(k): v for k, v in st.session_state.user_answers.items()},
+                            "settings": {
+                                "start_no": start_no,
+                                "end_no": end_no,
+                                "order_option": order_option,
+                                "direction_option": direction_option,
+                                "filter_starred": filter_starred
+                            }
                         }
                         save_progress(progress_data)
                         st.rerun()
@@ -670,8 +707,8 @@ with tab_analytics:
         
         # Sort words by wrong count descending
         sorted_mistakes = sorted(
-            [item for item in mistakes_data.items() if item[1]["wrong"] > 0],
-            key=lambda x: (x[1]["wrong"], x[1]["wrong"] / x[1]["total"]),
+            [item for item in mistakes_data.items() if item["wrong"] > 0],
+            key=lambda x: (x["wrong"], x["wrong"] / x["total"]),
             reverse=True
         )
         
