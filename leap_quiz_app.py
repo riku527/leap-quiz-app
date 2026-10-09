@@ -6,7 +6,8 @@ import os
 
 # Helper to ensure HTML string has no leading indentation (prevents markdown code-block bug)
 def clean_html(html_str):
-    return textwrap.dedent(html_str).strip()
+    lines = [line.strip() for line in html_str.splitlines() if line.strip()]
+    return "".join(lines)
 
 # Streamlit Page Configuration
 st.set_page_config(
