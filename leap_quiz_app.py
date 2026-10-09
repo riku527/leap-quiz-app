@@ -1,3 +1,4 @@
+import textwrap
 import streamlit as st
 import json
 import random
@@ -224,12 +225,12 @@ st.markdown("""
         border-radius: 20px;
     }
     .q-prompt {
-        font-size: clamp(1.4rem, 5vw, 2.1rem);
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
         font-weight: 800;
         color: #0F172A;
         margin: 8px 0 4px 0;
         word-break: break-word;
-        line-height: 1.35;
+        line-height: 1.25;
     }
     .ipa-text {
         font-size: clamp(0.9rem, 3vw, 1.1rem);
@@ -389,98 +390,49 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
     else:
         target_numbers = [no for no in all_vocab.keys() if start <= no <= end]
     
-    if order in ["ランダム", "ランダム（網羅的）"]:
+    if order == "ランダム":
         random.shuffle(target_numbers)
     else:
         target_numbers.sort()
         
     items = []
-    total_num = len(target_numbers)
-    half_num = total_num // 2 if total_num > 1 else 1
-
-    for idx, no in enumerate(target_numbers):
+    for no in target_numbers:
         info = all_vocab[no]
         
         current_mode = direction
         if direction.startswith("混合"):
             current_mode = random.choice(["英語 ➔ 日本語", "日本語 ➔ 英語"])
-        elif direction.startswith("LEAP小テスト"):
-            if idx < half_num:
-                current_mode = "LEAP小テスト Part1"
+        elif direction == "LEAP小テスト形式":
+            # Part 1 for first half, Part 2 for second half
+            half_idx = len(target_numbers) // 2
+            if len(items) < half_idx:
+                current_mode = "1. 日➔英（小テスト）"
             else:
-                current_mode = "LEAP小テスト Part2"
-            
-        if current_mode == "LEAP小テスト Part1":
-            prompt_title = "1. 日本語の意味に合うように、( )に入れるのに最も適切なものを選びなさい。"
-            prompt_body = f"【日本語】 {info['ja']}\n【英語】 (   )"
-            correct_ans, options = get_similar_distractors(no, "日本語 ➔ 英語", all_vocab)
-            items.append({
-                "no": no,
-                "en": info["en"],
-                "ja": info["ja"],
-                "ipa": info.get("ipa", "[ /.../ ]"),
-                "etymology": info.get("etymology", "語源情報なし"),
-                "prompt_title": prompt_title,
-                "prompt": prompt_body,
-                "correct_ans": correct_ans,
-                "options": options,
-                "mode": "1. 日➔英（LEAP小テスト）",
-                "section_type": "leap_part1"
-            })
-        elif current_mode == "LEAP小テスト Part2":
-            prompt_title = "2. 英語の意味に合うように、( )に入れるのに最も適切なものを選びなさい。"
-            prompt_body = f"【英語】 {info['en']}\n【日本語】 (   )"
-            correct_ans, options = get_similar_distractors(no, "英語 ➔ 日本語", all_vocab)
-            items.append({
-                "no": no,
-                "en": info["en"],
-                "ja": info["ja"],
-                "ipa": info.get("ipa", "[ /.../ ]"),
-                "etymology": info.get("etymology", "語源情報なし"),
-                "prompt_title": prompt_title,
-                "prompt": prompt_body,
-                "correct_ans": correct_ans,
-                "options": options,
-                "mode": "2. 英➔日（LEAP小テスト）",
-                "section_type": "leap_part2"
-            })
-        elif current_mode == "英語 ➔ 日本語":
+                current_mode = "2. 英➔日（小テスト）"
+
+        if "英➔日" in current_mode or current_mode == "英語 ➔ 日本語":
             prompt = info["en"]
             correct_ans, options = get_similar_distractors(no, "英語 ➔ 日本語", all_vocab)
-            items.append({
-                "no": no,
-                "en": info["en"],
-                "ja": info["ja"],
-                "ipa": info.get("ipa", "[ /.../ ]"),
-                "etymology": info.get("etymology", "語源情報なし"),
-                "prompt_title": None,
-                "prompt": prompt,
-                "correct_ans": correct_ans,
-                "options": options,
-                "mode": current_mode,
-                "section_type": "standard"
-            })
         else:
             prompt = info["ja"]
             correct_ans, options = get_similar_distractors(no, "日本語 ➔ 英語", all_vocab)
-            items.append({
-                "no": no,
-                "en": info["en"],
-                "ja": info["ja"],
-                "ipa": info.get("ipa", "[ /.../ ]"),
-                "etymology": info.get("etymology", "語源情報なし"),
-                "prompt_title": None,
-                "prompt": prompt,
-                "correct_ans": correct_ans,
-                "options": options,
-                "mode": current_mode,
-                "section_type": "standard"
-            })
+            
+        items.append({
+            "no": no,
+            "en": info["en"],
+            "ja": info["ja"],
+            "ipa": info.get("ipa", "[ /.../ ]"),
+            "etymology": info.get("etymology", "語源情報なし"),
+            "prompt": prompt,
+            "correct_ans": correct_ans,
+            "options": options,
+            "mode": current_mode
+        })
     return items
 
 # Header
 st.markdown("<div class='main-title'>必携 英単語 LEAP</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>🎯 4択英単語クイズ & LEAP小テスト機能</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>🎯 4択英単語クイズ & ⭐ スターリスト管理</div>", unsafe_allow_html=True)
 
 if not vocab_db:
     st.error("⚠️ 単語データ (leap_words.json) が見つかりません。")
@@ -493,9 +445,6 @@ st.sidebar.header("⚙️ 出題条件・設定")
 init_start = saved_settings.get("start_no", 1451)
 init_end = saved_settings.get("end_no", 1700)
 init_order = saved_settings.get("order_option", "番号順")
-if init_order == "ランダム（網羅的）":
-    init_order = "ランダム"
-
 init_direction = saved_settings.get("direction_option", "英語 ➔ 日本語")
 init_show_ipa = saved_settings.get("show_ipa", True)
 
@@ -506,16 +455,8 @@ order_list = ["番号順", "ランダム"]
 order_idx = order_list.index(init_order) if init_order in order_list else 0
 order_option = st.sidebar.radio("出題順序", order_list, index=order_idx)
 
-dir_list = ["英語 ➔ 日本語", "日本語 ➔ 英語", "混合（英➔日・日➔英）", "LEAP小テスト形式（1.日➔英 / 2.英➔日）"]
-dir_idx = 0
-for d_i, d_val in enumerate(dir_list):
-    if init_direction.startswith("LEAP小テスト") and d_val.startswith("LEAP小テスト"):
-        dir_idx = d_i
-        break
-    elif d_val == init_direction:
-        dir_idx = d_i
-        break
-
+dir_list = ["英語 ➔ 日本語", "日本語 ➔ 英語", "混合（英➔日・日➔英）", "LEAP小テスト形式"]
+dir_idx = dir_list.index(init_direction) if init_direction in dir_list else 0
 direction_option = st.sidebar.radio("翻訳・出題モード", dir_list, index=dir_idx)
 
 st.sidebar.markdown("---")
@@ -531,7 +472,7 @@ def get_all_combined_starred_words():
         combined.update(word_list)
     return sorted(list(combined))
 
-# Sidebar Button: Review ALL Starred Words
+# Sidebar Button: Review ALL Starred Words (Active + History)
 st.sidebar.markdown("---")
 st.sidebar.subheader("⭐ 全スター一括復習")
 all_starred_combined = get_all_combined_starred_words()
@@ -591,7 +532,7 @@ with tab_quiz:
         saved_range = f"No.{saved_settings_meta.get('start_no', start_no)} ～ No.{saved_settings_meta.get('end_no', end_no)}"
         
         if 0 <= saved_idx < saved_total:
-            st.markdown(f"""
+            resume_html = textwrap.dedent(f"""
             <div class='resume-box'>
                 <h3 style='margin: 0 0 10px 0; color: #1E3A8A;'>⏯️ 前回の解き途中データがあります</h3>
                 <div style='text-align: left; background: white; padding: 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.95rem; color: #334155;'>
@@ -600,7 +541,8 @@ with tab_quiz:
                     ・<b>現在の進捗</b>: 第 <b>{saved_idx + 1}</b> 問 / 全 {saved_total} 問 (現在 <b>{saved_score}</b> 問正解)
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """).strip()
+            st.markdown(resume_html, unsafe_allow_html=True)
             
             col_res1, col_res2 = st.columns(2)
             with col_res1:
@@ -646,13 +588,14 @@ with tab_quiz:
         st.warning(f"指定された範囲 (No.{start_no} ～ No.{end_no}) に該当する単語データがありません。設定を確認してください。")
     else:
         # Settings summary badge
-        st.markdown(f"""
+        badge_html = textwrap.dedent(f"""
         <div class='setting-badge-container'>
             <span class='setting-badge'>範囲: No.{start_no} ～ No.{end_no}</span>
             <span class='setting-badge'>順序: {order_option}</span>
             <span class='setting-badge'>モード: {direction_option}</span>
         </div>
-        """, unsafe_allow_html=True)
+        """).strip()
+        st.markdown(badge_html, unsafe_allow_html=True)
 
         current_idx = st.session_state.current_idx
 
@@ -660,12 +603,13 @@ with tab_quiz:
         if current_idx >= total_questions:
             clear_progress()
             accuracy = (st.session_state.score / total_questions) * 100 if total_questions > 0 else 0
-            st.markdown(f"""
+            score_html = textwrap.dedent(f"""
             <div class='score-banner'>
                 <h2 style='font-size: clamp(1.4rem, 4vw, 2.0rem); margin-bottom: 8px;'>🎉 全問題が終了しました！</h2>
                 <p style='font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 0;'>正解率: <b>{accuracy:.1f}%</b> ({st.session_state.score} / {total_questions} 問)</p>
             </div>
-            """, unsafe_allow_html=True)
+            """).strip()
+            st.markdown(score_html, unsafe_allow_html=True)
             
             wrong_item_nos = []
             for idx, item in enumerate(quiz_items):
@@ -691,15 +635,13 @@ with tab_quiz:
                         st.rerun()
 
             st.markdown("---")
-            st.subheader("📊 回答結果一覧")
+            st.subheader("📊 回答結果・語源解説一覧")
             for idx, item in enumerate(quiz_items):
                 is_correct = st.session_state.user_answers.get(idx, {}).get("is_correct", False)
                 user_choice = st.session_state.user_answers.get(idx, {}).get("choice", "未回答")
                 icon = "✅ 正解" if is_correct else "❌ 不正解"
                 
                 with st.expander(f"{icon} | No.{item['no']} : {item['en']} ({item['ja']})"):
-                    if item.get("prompt_title"):
-                        st.write(f"・**形式**: {item['prompt_title']}")
                     st.write(f"・**問題**: {item['prompt']}")
                     st.write(f"・**あなたの回答**: {user_choice}")
                     st.write(f"・**正解**: {item['correct_ans']}")
@@ -733,26 +675,26 @@ with tab_quiz:
                     st.rerun()
 
             # IPA HTML rendered INSIDE the card box
-            ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and (item["mode"] == "英語 ➔ 日本語" or "日➔英" in item["mode"])) else ""
+            show_ipa_for_item = show_ipa and ("英語" in item["mode"] or "英➔日" in item["mode"] or item["mode"] == "英語 ➔ 日本語")
+            ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if show_ipa_for_item else ""
+            prompt_html = str(item['prompt']).replace('\n', '<br>')
 
-            prompt_title_html = f"<div style='font-size: clamp(0.85rem, 2.5vw, 1.0rem); color:#1E3A8A; font-weight:700; margin-top:6px; margin-bottom:6px;'>{item['prompt_title']}</div>" if item.get("prompt_title") else ""
-            formatted_prompt = item['prompt'].replace('\n', '<br>')
-
-            # Question Card Box
-            st.markdown(f"""
+            # Question Card Box (dedented so markdown renderer doesn't escape HTML tags)
+            card_box_html = textwrap.dedent(f"""
             <div class='card-box'>
                 <div style='display: flex; justify-content: space-between; align-items: center;'>
                     <span class='q-number'>No. {item['no']}</span>
                     <span class='mode-badge'>{item['mode']}</span>
                 </div>
-                {prompt_title_html}
-                <div class='q-prompt'>{formatted_prompt}</div>
+                <div class='q-prompt'>{prompt_html}</div>
                 {ipa_display_html}
             </div>
-            """, unsafe_allow_html=True)
+            """).strip()
+            st.markdown(card_box_html, unsafe_allow_html=True)
 
             # Audio playback button
-            render_audio_button(item["en"])
+            text_to_speak = item["en"] if "en" in item else item["prompt"]
+            render_audio_button(text_to_speak)
 
             st.write("▼ 正しい選択肢をタップしてください：")
 
@@ -808,11 +750,12 @@ with tab_quiz:
                         st.write(f"・**発音記号**: {item['ipa']}")
                     st.write(f"・**意味**: {item['ja']}")
                     if item.get("etymology"):
-                        st.markdown(f"""
+                        etym_html = textwrap.dedent(f"""
                         <div class='etym-box'>
                             💡 <b>語源・成り立ち:</b><br>{item['etymology']}
                         </div>
-                        """, unsafe_allow_html=True)
+                        """).strip()
+                        st.markdown(etym_html, unsafe_allow_html=True)
 
             # Navigation Buttons (Previous & Next)
             col_nav1, col_nav2 = st.columns(2)
@@ -919,6 +862,7 @@ with tab_stars:
     if not saved_lists:
         st.info("💡 保存されたリストはまだありません。上記のフォームから好きな名前で保存できます！")
     else:
+        # NEW BUTTON: Bulk load ALL saved lists into active starred words!
         if st.button("📥 保存済みの全リストの単語を一括でスターに読み込む", use_container_width=True):
             for word_nos in saved_lists.values():
                 st.session_state.starred_words.update(word_nos)
@@ -984,26 +928,26 @@ with tab_analytics:
         # Summary Metrics
         col_m1, col_m2, col_m3 = st.columns(3)
         with col_m1:
-            st.markdown(f"""
+            st.markdown(textwrap.dedent(f"""
             <div class='stat-card'>
                 <div class='stat-value'>{total_attempts_all}</div>
                 <div class='stat-label'>総解答数</div>
             </div>
-            """, unsafe_allow_html=True)
+            """).strip(), unsafe_allow_html=True)
         with col_m2:
-            st.markdown(f"""
+            st.markdown(textwrap.dedent(f"""
             <div class='stat-card'>
                 <div class='stat-value' style='color:#DC2626;'>{len([k for k, v in mistakes_data.items() if v['wrong'] > 0])}</div>
                 <div class='stat-label'>苦手登録単語数</div>
             </div>
-            """, unsafe_allow_html=True)
+            """).strip(), unsafe_allow_html=True)
         with col_m3:
-            st.markdown(f"""
+            st.markdown(textwrap.dedent(f"""
             <div class='stat-card'>
                 <div class='stat-value' style='color:#059669;'>{overall_accuracy:.1f}%</div>
                 <div class='stat-label'>通算正解率</div>
             </div>
-            """, unsafe_allow_html=True)
+            """).strip(), unsafe_allow_html=True)
 
         st.markdown("---")
         st.subheader("🔥 苦手単語ワーストランキング")
@@ -1048,7 +992,7 @@ with tab_analytics:
                     err_rate = (wrong_cnt / total_cnt) * 100
                     ipa_str = f" [ {info.get('ipa', '')} ]" if info.get('ipa') else ""
                     
-                    st.markdown(f"""
+                    rank_card_html = textwrap.dedent(f"""
                     <div style='background-color:#FFF5F5; border-left:4px solid #EF4444; padding:10px 14px; border-radius:8px; margin-bottom:8px;'>
                         <div style='display:flex; justify-content:space-between; align-items:center;'>
                             <b style='color:#991B1B;'>第 {rank} 位 (No.{word_no}) : {info['en']}{ipa_str}</b>
@@ -1057,7 +1001,8 @@ with tab_analytics:
                         <div style='color:#4B5563; font-size:0.9rem; margin-top:4px;'>意味: {info['ja']}</div>
                         <div style='color:#6B7280; font-size:0.8rem; margin-top:2px;'>誤答率: {err_rate:.0f}% ({wrong_cnt}/{total_cnt}回)</div>
                     </div>
-                    """, unsafe_allow_html=True)
+                    """).strip()
+                    st.markdown(rank_card_html, unsafe_allow_html=True)
 
         st.markdown("---")
         if st.button("🗑️ 苦手・解答データをリセットする", use_container_width=True):
