@@ -2,1356 +2,1627 @@
   "1": {
     "en": "agree",
     "ja": "賛成する／意見が一致する／(with ～)(気候などが)(～に)合う",
-    "ipa": "/əˈɡriː/"
+    "ipa": "/əˈɡriː/",
+    "etymology": "a- (～へ) + gree (受け入れられる) ➔ 人の意見を受け入れて一致することから「賛成する」"
   },
   "2": {
     "en": "oppose",
     "ja": "～に反対する",
-    "ipa": "/əˈpoʊz/"
+    "ipa": "/əˈpoʊz/",
+    "etymology": "op- (～に対して) + pose (置く) ➔ 対向して置くことから「反対する」"
   },
   "3": {
     "en": "advise",
     "ja": "～に忠告する",
-    "ipa": "/ədˈvaɪz/"
+    "ipa": "/ədˈvaɪz/",
+    "etymology": "ad- (～へ) + vise (見る) ➔ 相手のために見通しを示して「忠告する」"
   },
   "4": {
     "en": "tip",
     "ja": "助言，ヒント／チップ／(足や山などの)先，先端",
-    "ipa": "/tɪp/"
+    "ipa": "/tɪp/",
+    "etymology": "先端・助言を意味する古語・俗語由来。"
   },
   "5": {
     "en": "discuss",
     "ja": "～について話し合う，議論する／～を話題に出す",
-    "ipa": "/dɪˈskʌs/"
+    "ipa": "/dɪˈskʌs/",
+    "etymology": "dis- (離れて) + cuss (叩く) ➔ 叩き解きほぐして「話し合う」"
   },
   "6": {
     "en": "blame",
     "ja": "～に責任があるとする",
-    "ipa": "/bleɪm/"
+    "ipa": "/bleɪm/",
+    "etymology": "blaspheme(非難する)と同語源 ➔ 責任を負わせて「非難する」"
   },
   "7": {
     "en": "argue",
     "ja": "(that SV)～と主張する／(with ～)(～と)言い争う",
-    "ipa": "/ˈɑːrɡjuː/"
+    "ipa": "/ˈɑːrɡjuː/",
+    "etymology": "argu- (明るくする) ➔ 事実を明らかにするために「主張する」"
   },
   "8": {
     "en": "claim",
     "ja": "(that SV)～と主張する／～を要求する，主張する／主張，要求",
-    "ipa": "/kleɪm/"
+    "ipa": "/kleɪm/",
+    "etymology": "claim (叫ぶ) ➔ 権利を叫んで「主張する・要求する」"
   },
   "9": {
     "en": "complain",
     "ja": "文句を言う，苦情を言う／(of ～)(病気などを)訴える",
-    "ipa": "/kəmˈpleɪn/"
+    "ipa": "/kəmˈpleɪn/",
+    "etymology": "com- (強調) + plain (胸を打つ) ➔ 苦しみを訴えて「不満を言う」"
   },
   "10": {
     "en": "offer",
     "ja": "～を申し出る／申し出／値引き",
-    "ipa": "/ˈɔːfər/"
+    "ipa": "/ˈɔːfər/",
+    "etymology": "ob- (前に) + fer (運ぶ) ➔ 前に差し出して「申し出る」"
   },
   "11": {
     "en": "suggest",
     "ja": "～を示唆する／～を提案する",
-    "ipa": "/səˈdʒest/"
+    "ipa": "/səˈdʒest/",
+    "etymology": "sub- (下に) + gest (運ぶ) ➔ そっと下に置くイメージから「提案する」"
   },
   "12": {
     "en": "recommend",
     "ja": "～を推薦する，勧める",
-    "ipa": "/ˌrekəˈmend/"
+    "ipa": "/ˌrekəˈmend/",
+    "etymology": "re- (再び) + com- + mend (委ねる) ➔ 確信を持って「勧める」"
   },
   "13": {
     "en": "grateful",
     "ja": "感謝している",
-    "ipa": "/ˈɡreɪtfl/"
+    "ipa": "/ˈɡreɪtfl/",
+    "etymology": "grate (感謝) + ful (満ちた) ➔ 感謝の気持ちでいっぱいの"
   },
   "14": {
     "en": "apologize",
     "ja": "(to ～)(～に)謝る",
-    "ipa": "/əˈpɑːlədʒaɪz/"
+    "ipa": "/əˈpɑːlədʒaɪz/",
+    "etymology": "apo- (離れて) + log (言葉) + ize ➔ 弁明の言葉を述べて「謝る」"
   },
   "15": {
     "en": "excuse",
     "ja": "言い訳／～を許す／(A from B)(B からA)を免除する",
-    "ipa": "/ɪkˈskjuːs/"
+    "ipa": "/ɪkˈskjuːs/",
+    "etymology": "ex- (外へ) + cuse (理由・罪) ➔ 罪から外すことから「許す・言い訳」"
   },
   "16": {
     "en": "celebrate",
     "ja": "(特別な日、出来事)を祝う／(儀式など)を挙行する，執り行う",
-    "ipa": "/ˈselɪbreɪt/"
+    "ipa": "/ˈselɪbreɪt/",
+    "etymology": "celeber (大勢が集まる) ➔ 集まって「祝う」"
   },
   "17": {
     "en": "congratulate",
     "ja": "(人)を祝う，～にお祝いを述べる",
-    "ipa": "/kənˈɡrætʃuleɪt/"
+    "ipa": "/kənˈɡrætʃuleɪt/",
+    "etymology": "con- (共に) + grat (喜ぶ) ➔ 共に喜びを分かち合って「祝う」"
   },
   "18": {
     "en": "admire",
     "ja": "～を称賛する，～に感心する",
-    "ipa": "/ədˈmaɪər/"
+    "ipa": "/ədˈmaɪər/",
+    "etymology": "ad- (～に) + mire (驚く) ➔ うっとり感嘆して「称賛する」"
   },
   "19": {
     "en": "impress",
     "ja": "～に感銘を与える，～を感心させる",
-    "ipa": "/ɪmˈpres/"
+    "ipa": "/ɪmˈpres/",
+    "etymology": "im- (中に) + press (押す) ➔ 心の中に深く押し刻んで「感銘を与える」"
   },
   "20": {
     "en": "award",
     "ja": "賞／～を授与する",
-    "ipa": "/əˈwɔːrd/"
+    "ipa": "/əˈwɔːrd/",
+    "etymology": "a- (～へ) + ward (見る・見極める) ➔ 審査して与える「賞・授与する」"
   },
   "1451": {
     "en": "paralyze",
     "ja": "～を麻痺させる",
-    "ipa": "/ˈpærəlaɪz/"
+    "ipa": "/ˈpærəlaɪz/",
+    "etymology": "para- (異常) + lyze (解く) ➔ 神経が解けて運動機能が解体することから「麻痺させる」"
   },
   "1452": {
     "en": "prescribe",
     "ja": "(薬など)を処方する／(行為など)を指示する",
-    "ipa": "/prɪˈskraɪb/"
+    "ipa": "/prɪˈskraɪb/",
+    "etymology": "pre- (あらかじめ) + scribe (書く) ➔ あらかじめ紙に指示を書いて「処方する」"
   },
   "1453": {
     "en": "digest",
     "ja": "～を消化する／～を理解する／要約",
-    "ipa": "/daɪˈdʒest/"
+    "ipa": "/daɪˈdʒest/",
+    "etymology": "di- (分離) + gest (運ぶ) ➔ 食べ物を細かく分けて体に運ぶことから「消化する」"
   },
   "1454": {
     "en": "weary",
     "ja": "(極度に)疲れている／うんざり [飽き飽き] している",
-    "ipa": "/ˈwɪəri/"
+    "ipa": "/ˈwɪəri/",
+    "etymology": "wear (すり減る) と同根 ➔ 体力がすり減って「疲れ果てた」"
   },
   "1455": {
     "en": "nourish",
     "ja": "～に栄養を与える／(考えなど)を抱く",
-    "ipa": "/ˈnɜːrɪʃ/"
+    "ipa": "/ˈnɜːrɪʃ/",
+    "etymology": "nour- (育てる・乳をあげる) ➔ 身体に「栄養を与える」"
   },
   "1456": {
     "en": "appalling",
     "ja": "ぞっとするような",
-    "ipa": "/əˈpɔːlɪŋ/"
+    "ipa": "/əˈpɔːlɪŋ/",
+    "etymology": "ap- (～へ) + pale (青ざめる) ➔ 顔が青ざめるほど「ぞっとするような」"
   },
   "1457": {
     "en": "flesh",
     "ja": "(人､動物の皮､骨に対する)肉",
-    "ipa": "/flelesh/"
+    "ipa": "/flelesh/",
+    "etymology": "ゲルマン語由来の「皮に対する肉」を指す単語"
   },
   "1458": {
     "en": "limb",
     "ja": "手足 (の本)",
-    "ipa": "/lɪm/"
+    "ipa": "/lɪm/",
+    "etymology": "身体の接合部・枝・「手足」"
   },
   "1459": {
     "en": "erect",
     "ja": "直立した／～を建てる",
-    "ipa": "/ɪˈrekt/"
+    "ipa": "/ɪˈrekt/",
+    "etymology": "e- (外へ) + rect (真っ直ぐ) ➔ まっすぐ上に伸ばして「直立した・建てる」"
   },
   "1460": {
     "en": "spinal",
     "ja": "脊椎の",
-    "ipa": "/ˈspaɪnl/"
+    "ipa": "/ˈspaɪnl/",
+    "etymology": "spine (背骨・針) + al ➔ 「脊椎の」"
   },
   "1461": {
     "en": "suck",
     "ja": "～を吸う",
-    "ipa": "/sʌk/"
+    "ipa": "/sʌk/",
+    "etymology": "擬音語(シュッと吸う音)由来の「吸う」"
   },
   "1462": {
     "en": "shrug",
     "ja": "(肩)をすくめる／肩をすくめる",
-    "ipa": "/ʃrʌɡ/"
+    "ipa": "/ʃrʌɡ/",
+    "etymology": "身体を縮める動作由来の「肩をすくめる」"
   },
   "1463": {
     "en": "compensate",
     "ja": "(A for B)(A)に (Bを)補償する",
-    "ipa": "/ˈkɑːmpenseɪt/"
+    "ipa": "/ˈkɑːmpenseɪt/",
+    "etymology": "com- (共に) + pend (つるす・計る) ➔ 天秤を釣り合わせて「補償する」"
   },
   "1464": {
     "en": "abuse",
     "ja": "虐待／乱用／～を悪用する",
-    "ipa": "/əˈbjuːs/"
+    "ipa": "/əˈbjuːs/",
+    "etymology": "ab- (離れて・間違って) + use (使う) ➔ 正しくない使い方をして「虐待・乱用する」"
   },
   "1465": {
     "en": "bias",
     "ja": "偏見",
-    "ipa": "/ˈbaɪəs/"
+    "ipa": "/ˈbaɪəs/",
+    "etymology": "斜めの線を意味する言葉由来 ➔ ものの見方が傾いている「偏見」"
   },
   "1466": {
     "en": "prestige",
     "ja": "名声，威信",
-    "ipa": "/preˈstiːʒ/"
+    "ipa": "/preˈstiːʒ/",
+    "etymology": "pre- (前) + stig (刺す・品定め) ➔ 人々の前で輝く「名声・威信」"
   },
   "1467": {
     "en": "privilege",
     "ja": "特権",
-    "ipa": "/ˈprɪvəlɪdʒ/"
+    "ipa": "/ˈprɪvəlɪdʒ/",
+    "etymology": "privi- (個人の) + lege (法律) ➔ 特定の個人だけに与えられた「特権」"
   },
   "1468": {
     "en": "feat",
     "ja": "偉業",
-    "ipa": "/fiːt/"
+    "ipa": "/fiːt/",
+    "etymology": "fact(なされたこと)と同語源 ➔ 素晴らしい行為・「偉業」"
   },
   "1469": {
     "en": "dignity",
     "ja": "威厳",
-    "ipa": "/ˈdɪɡnəti/"
+    "ipa": "/ˈdɪɡnəti/",
+    "etymology": "dign (価値のある) + ity ➔ 人としての価値・「威厳・気高さ」"
   },
   "1470": {
     "en": "virtue",
     "ja": "美徳／(人，物の個-の)長所／(by – of ～)～のために",
-    "ipa": "/ˈvɜːrtʃuː/"
+    "ipa": "/ˈvɜːrtʃuː/",
+    "etymology": "virtue (男らしさ・力) ➔ 人としてあるべきすぐれた道徳・「美徳・長所」"
   },
   "1471": {
     "en": "aristocracy",
     "ja": "(通例 the～)貴族 (階級，社会)",
-    "ipa": "/ˌærɪˈstɑːkrəsi/"
+    "ipa": "/ˌærɪˈstɑːkrəsi/",
+    "etymology": "aristo (最良の) + cracy (支配) ➔ 最良の階級による支配・「貴族階級」"
   },
   "1472": {
     "en": "rebel",
     "ja": "反逆者／(against ～)(～に)反逆する，反抗する",
-    "ipa": "/ˈrebl/"
+    "ipa": "/ˈrebl/",
+    "etymology": "re- (再び) + bel (戦争) ➔ 再び戦いを起こす「反逆者」"
   },
   "1473": {
     "en": "scheme",
     "ja": "〈英〉計画／陰謀",
-    "ipa": "/skiːm/"
+    "ipa": "/skiːm/",
+    "etymology": "schema (形・図式) ➔ 体系的な「計画・形」"
   },
   "1474": {
     "en": "convention",
     "ja": "会議，大会／慣習／条約",
-    "ipa": "/kənˈvenʃn/"
+    "ipa": "/kənˈvenʃn/",
+    "etymology": "con- (共に) + ven (行く) ➔ 人々が集まること「会議・慣習」"
   },
   "1475": {
     "en": "conference",
     "ja": "(on ～)(～に関する)会議",
-    "ipa": "/ˈkɑːnfərəns/"
+    "ipa": "/ˈkɑːnfərəns/",
+    "etymology": "con- (共に) + fer (運ぶ) ➔ 意見を持ち寄る「会議」"
   },
   "1476": {
     "en": "consent",
     "ja": "合意／(to ～)(～に)合意する",
-    "ipa": "/kənˈsent/"
+    "ipa": "/kənˈsent/",
+    "etymology": "con- (共に) + sent (感じる) ➔ 同じように感じて「合意する」"
   },
   "1477": {
     "en": "initiative",
     "ja": "新構想，新計画／主導権",
-    "ipa": "/ɪˈnɪʃətɪv/"
+    "ipa": "/ɪˈnɪʃətɪv/",
+    "etymology": "in- (中に) + it (行く) ➔ 最初に踏み出す「主導権・新構想」"
   },
   "1478": {
     "en": "province",
     "ja": "(カナダなどの)州，(中国の)省／(the -s)地方",
-    "ipa": "/ˈprɑːvɪns/"
+    "ipa": "/ˈprɑːvɪns/",
+    "etymology": "pro- (前に) + vince (勝つ) ➔ 征服した領域「州・地方」"
   },
   "1479": {
     "en": "colony",
     "ja": "植民地／(アリなどの)群落",
-    "ipa": "/ˈkɑːləni/"
+    "ipa": "/ˈkɑːləni/",
+    "etymology": "colon (耕す) ➔ 入植して耕した土地「植民地」"
   },
   "1480": {
     "en": "frontier",
     "ja": "辺境，(主に〈英〉)国境／(the -s)最前線",
-    "ipa": "/frʌnˈtɪər/"
+    "ipa": "/frʌnˈtɪər/",
+    "etymology": "front (前線) + ier ➔ 国の最前線「辺境・国境」"
   },
   "1481": {
     "en": "treaty",
     "ja": "条約",
-    "ipa": "/ˈtriːti/"
+    "ipa": "/ˈtriːti/",
+    "etymology": "treat (扱う・交渉する) ➔ 交渉の末の「条約」"
   },
   "1482": {
     "en": "tribe",
     "ja": "部族，種族",
-    "ipa": "/traɪb/"
+    "ipa": "/traɪb/",
+    "etymology": "tri (3つの) + bu (割り当てる) ➔ 古代ローマの3つの部族由来「部族」"
   },
   "1483": {
     "en": "pension",
     "ja": "年金",
-    "ipa": "/ˈpenʃn/"
+    "ipa": "/ˈpenʃn/",
+    "etymology": "pens (重さを量る・支払う) ➔ 定期的に支払われる「年金」"
   },
   "1484": {
     "en": "stake",
     "ja": "(have a – in ～)(～に)利害関係 (を待つ)／(at -)危険／(-s)賭け金，配当金",
-    "ipa": "/steɪk/"
+    "ipa": "/steɪk/",
+    "etymology": "杭(stake)を打って自分の領地や賭け金を主張すること「利害関係・賭け金」"
   },
   "1485": {
     "en": "coverage",
     "ja": "報道／(保険の)補償 (範囲)",
-    "ipa": "/ˈkʌvərɪdʒ/"
+    "ipa": "/ˈkʌvərɪdʒ/",
+    "etymology": "cover (覆う) + age ➔ 保険や取材でカバーする「補償範囲・報道」"
   },
   "1486": {
     "en": "obligation",
     "ja": "(社会に対する)責務／(個人に対する)恩義",
-    "ipa": "/ˌɑːblɪˈɡeɪʃn/"
+    "ipa": "/ˌɑːblɪˈɡeɪʃn/",
+    "etymology": "ob- (～に) + lig (縛る) ➔ 法や道徳で縛られている「責務・義務」"
   },
   "1487": {
     "en": "hygiene",
     "ja": "衛生 (状態)，衛生学",
-    "ipa": "/ˈhaɪdʒiːn/"
+    "ipa": "/ˈhaɪdʒiːn/",
+    "etymology": "Hygeia (ギリシャ神話の健康の女神) 由来の「衛生状態」"
   },
   "1488": {
     "en": "supervisor",
     "ja": "(人・活動などの)監督者",
-    "ipa": "/ˈsuːpərvaɪzər/"
+    "ipa": "/ˈsuːpərvaɪzər/",
+    "etymology": "super- (上から) + vise (見る) ➔ 上から全体を見張る「監督者」"
   },
   "1489": {
     "en": "norm",
     "ja": "(the -)普通のこと／(-s)規範",
-    "ipa": "/nɔːrm/"
+    "ipa": "/nɔːrm/",
+    "etymology": "norma (大工の定規) ➔ 行動の基準となる「規範・標準」"
   },
   "1490": {
     "en": "patent",
     "ja": "特許 (権)／～の特許をとる／明白な，見えすいた",
-    "ipa": "/ˈpætnt/"
+    "ipa": "/ˈpætnt/",
+    "etymology": "pat (開く) ➔ 文書を開いて公表された「特許」"
   },
   "1491": {
     "en": "primitive",
     "ja": "原始的な，未開の",
-    "ipa": "/ˈprɪmətɪv/"
+    "ipa": "/ˈprɪmətɪv/",
+    "etymology": "prim (最初の) + itive ➔ 最も初期の「原始的な」"
   },
   "1492": {
     "en": "ethnic",
     "ja": "民族の，民族的な",
-    "ipa": "/ˈeθnɪk/"
+    "ipa": "/ˈeθnɪk/",
+    "etymology": "ethnos (人々・国民) ➔ 文化を共にする「民族の」"
   },
   "1493": {
     "en": "anonymous",
     "ja": "匿名の",
-    "ipa": "/əˈnɑːnɪməs/"
+    "ipa": "/əˈnɑːnɪməs/",
+    "etymology": "an- (無) + onym (名前) ➔ 名前がない「匿名の」"
   },
   "1494": {
     "en": "metropolitan",
     "ja": "大都市の",
-    "ipa": "/ˌmetrəˈpɑːlɪtn/"
+    "ipa": "/ˌmetrəˈpɑːlɪtn/",
+    "etymology": "metro (母) + polis (都市) ➔ 母都市・「大都市の」"
   },
   "1495": {
     "en": "entitled",
     "ja": "(to ～)(～の)権利がある／～と題された",
-    "ipa": "/ɪnˈtaɪtld/"
+    "ipa": "/ɪnˈtaɪtld/",
+    "etymology": "en- (与える) + title (称号) ➔ 権利やタイトルを与えられた「権利がある」"
   },
   "1496": {
     "en": "demographic",
     "ja": "人口統計上の／(-群の人-から成る)年齢層",
-    "ipa": "/ˌdeməˈɡræfɪk/"
+    "ipa": "/ˌdeməˈɡræfɪk/",
+    "etymology": "demo (人々) + graph (記録) ➔ 人口構成に関する「人口統計の」"
   },
   "1497": {
     "en": "donate",
     "ja": "～を寄付する／(臓器など)を提供する",
-    "ipa": "/ˈdoʊneɪt/"
+    "ipa": "/ˈdoʊneɪt/",
+    "etymology": "don (与える) + ate ➔ 喜んで差出物として「寄付する」"
   },
   "1498": {
     "en": "flourish",
     "ja": "栄える",
-    "ipa": "/ˈflɜːrɪʃ/"
+    "ipa": "/ˈflɜːrɪʃ/",
+    "etymology": "flor (花) ➔ 花が咲き誇るように「栄える」"
   },
   "1499": {
     "en": "conform",
     "ja": "(to ～)(～に)合わせる",
-    "ipa": "/kənˈfɔːrm/"
+    "ipa": "/kənˈfɔːrm/",
+    "etymology": "con- (共に) + form (形) ➔ 周りと同じ形にして「合致させる」"
   },
   "1500": {
     "en": "comply",
     "ja": "(with ～)(～に)従う， 遵守する",
-    "ipa": "/kəmˈplaɪ/"
+    "ipa": "/kəmˈplaɪ/",
+    "etymology": "com- (完全に) + pli (満たす) ➔ 要求を完全に満たして「従う」"
   },
   "1501": {
     "en": "legislation",
     "ja": "(集合的に)法律",
-    "ipa": "/ˌledʒɪˈsleɪʃn/"
+    "ipa": "/ˌledʒɪˈsleɪʃn/",
+    "etymology": "legi (法律) + lat (運ぶ) ➔ 法律を制定すること「法律」"
   },
   "1502": {
     "en": "testimony",
     "ja": "(法廷などでの)証言",
-    "ipa": "/ˈtestɪmoʊni/"
+    "ipa": "/ˈtestɪmoʊni/",
+    "etymology": "test (目撃者) + mony ➔ 目撃者による「証言」"
   },
   "1503": {
     "en": "jury",
     "ja": "陪審 (員団)",
-    "ipa": "/ˈdʒʊri/"
+    "ipa": "/ˈdʒʊri/",
+    "etymology": "jur (誓う) ➔ 誓いを立てた市民「陪審員団」"
   },
   "1504": {
     "en": "legitimate",
     "ja": "正当な／合法の",
-    "ipa": "/lɪˈdʒɪtɪmət/"
+    "ipa": "/lɪˈdʒɪtɪmət/",
+    "etymology": "legit (法律にかなった) ➔ 道理や法にかなった「正当な・合法の」"
   },
   "1505": {
     "en": "enforce",
     "ja": "～を施行する／～を強制する",
-    "ipa": "/ɪnˈfɔːrs/"
+    "ipa": "/ɪnˈfɔːrs/",
+    "etymology": "en- (～にする) + force (力) ➔ 力を発揮させて法律などを「施行する」"
   },
   "1506": {
     "en": "regime",
     "ja": "政権，政治体制",
-    "ipa": "/reɪˈʒiːm/"
+    "ipa": "/reɪˈʒiːm/",
+    "etymology": "reg (統治する) ➔ 政治の仕組み「政権・体制」"
   },
   "1507": {
     "en": "bureaucracy",
     "ja": "官僚制度，官僚主義／(集合的に)官僚",
-    "ipa": "/bjʊˈrɑːkrəsi/"
+    "ipa": "/bjʊˈrɑːkrəsi/",
+    "etymology": "bureau (事務机・省) + cracy (支配) ➔ 事務官による支配「官僚主義」"
   },
   "1508": {
     "en": "corruption",
     "ja": "腐敗，汚職",
-    "ipa": "/kəˈrʌpʃn/"
+    "ipa": "/kəˈrʌpʃn/",
+    "etymology": "cor- (完全に) + rupt (壊れる) ➔ 道徳が完全に崩壊した「腐敗・汚職」"
   },
   "1509": {
     "en": "tyranny",
     "ja": "圧政，専制政治／暴虐 (な行為)",
-    "ipa": "/ˈtɪrəni/"
+    "ipa": "/ˈtɪrəni/",
+    "etymology": "tyrannos (絶対的支配者) ➔ 権力を振るう「専制政治・圧政」"
   },
   "1510": {
     "en": "sanction",
     "ja": "(-s)制裁／(公的な)認可",
-    "ipa": "/ˈsæŋkʃn/"
+    "ipa": "/ˈsæŋkʃn/",
+    "etymology": "sanct (神聖にする) ➔ 神聖な法による「認可・制裁」"
   },
   "1511": {
     "en": "candidate",
     "ja": "(for ～)(～の)候補 (者)，(～になりそうな)人 [物]",
-    "ipa": "/ˈkændɪdeɪt/"
+    "ipa": "/ˈkændɪdeɪt/",
+    "etymology": "candid (白い) ➔ 古代ローマで白い服を着て選挙に出た「候補者」"
   },
   "1512": {
     "en": "senator",
     "ja": "〈米〉(しばしば S-)上院議員",
-    "ipa": "/ˈsenətər/"
+    "ipa": "/ˈsenətər/",
+    "etymology": "sen (年老いた) ➔ 長老による議会「上院議員」"
   },
   "1513": {
     "en": "ambassador",
     "ja": "大使",
-    "ipa": "/æmˈbæsədər/"
+    "ipa": "/æmˈbæsədər/",
+    "etymology": "amb- (周り) + act (駆動) ➔ 使者として赴く「大使」"
   },
   "1514": {
     "en": "diplomat",
     "ja": "外交官",
-    "ipa": "/ˈdɪpləmæt/"
+    "ipa": "/ˈdɪpləmæt/",
+    "etymology": "diplo (折られた文書) ➔ 外交文書を扱う「外交官」"
   },
   "1515": {
     "en": "refugee",
     "ja": "難民",
-    "ipa": "/ˌrefjuˈdʒiː/"
+    "ipa": "/ˌrefjuˈdʒiː/",
+    "etymology": "re- (後ろへ) + fuge (逃げる) ➔ 安全な場所へ逃れた「難民」"
   },
   "1516": {
     "en": "ally",
     "ja": "同盟国，協力者／(with ～)(～と)提携する",
-    "ipa": "/ˈælaɪ/"
+    "ipa": "/ˈælaɪ/",
+    "etymology": "al- (～に) + lig (結びつける) ➔ 固く結ばれた「同盟国・味方」"
   },
   "1517": {
     "en": "reign",
     "ja": "(君主などの)統治 (期間)／君臨する",
-    "ipa": "/reɪn/"
+    "ipa": "/reɪn/",
+    "etymology": "reg (統治する) ➔ 王の「統治期間・君臨する」"
   },
   "1518": {
     "en": "federal",
     "ja": "連邦の",
-    "ipa": "/ˈfedərəl/"
+    "ipa": "/ˈfedərəl/",
+    "etymology": "fid (信頼・条約) ➔ 各州の条約に基づく「連邦の」"
   },
   "1519": {
     "en": "communist",
     "ja": "共産主義(者)の／共産主義者",
-    "ipa": "/ˈkɑːmjənɪst/"
+    "ipa": "/ˈkɑːmjənɪst/",
+    "etymology": "commune (共有の) ➔ 財産を共有する思想「共産主義者」"
   },
   "1520": {
     "en": "municipal",
     "ja": "市(営)の，地方自治の",
-    "ipa": "/mjuːˈnɪsɪpl/"
+    "ipa": "/mjuːˈnɪsɪpl/",
+    "etymology": "muni (義務・サービス) + cip (取る) ➔ 市民サービスを果たす「市営の」"
   },
   "1521": {
     "en": "estate",
     "ja": "(全)財産／地所",
-    "ipa": "/ɪˈsteɪt/"
+    "ipa": "/ɪˈsteɪt/",
+    "etymology": "stat (立つ・状態) ➔ 社会的立場や所有地「財産・地所」"
   },
   "1522": {
     "en": "asset",
     "ja": "財産，資産",
-    "ipa": "/ˈæset/"
+    "ipa": "/ˈæset/",
+    "etymology": "ad- (～に) + satis (十分に) ➔ 債務を支払うのに十分な「資産」"
   },
   "1523": {
     "en": "revenue",
     "ja": "(国などの)歳入，(事業などの)収益",
-    "ipa": "/ˈrevənuː/"
+    "ipa": "/ˈrevənuː/",
+    "etymology": "re- (戻る) + ven (来る) ➔ 国や会社に戻ってくるお金「歳入・収益」"
   },
   "1524": {
     "en": "deficit",
     "ja": "(会社，国の)赤字",
-    "ipa": "/ˈdefɪsɪt/"
+    "ipa": "/ˈdefɪsɪt/",
+    "etymology": "de- (不足) + fic (作る) ➔ 作りが足りないこと「赤字」"
   },
   "1525": {
     "en": "commerce",
     "ja": "商業",
-    "ipa": "/ˈkɑːmɜːrs/"
+    "ipa": "/ˈkɑːmɜːrs/",
+    "etymology": "com- (共に) + merc (商品) ➔ 商品をやり取りする「商業」"
   },
   "1526": {
     "en": "output",
     "ja": "生産高／(エンジン，発電機などの)出力",
-    "ipa": "/ˈaʊtpʊt/"
+    "ipa": "/ˈaʊtpʊt/",
+    "etymology": "out (外へ) + put (置く) ➔ 産出された「生産高・出力」"
   },
   "1527": {
     "en": "subsidy",
     "ja": "補助金",
-    "ipa": "/ˈsʌbsədi/"
+    "ipa": "/ˈsʌbsədi/",
+    "etymology": "sub- (下に) + sid (座る) ➔ 下から支えるお金「補助金」"
   },
   "1528": {
     "en": "transaction",
     "ja": "取り引き",
-    "ipa": "/trænˈzækʃn/"
+    "ipa": "/trænˈzækʃn/",
+    "etymology": "trans- (越えて) + act (行う) ➔ 互いに取引を行うこと「取り引き」"
   },
   "1529": {
     "en": "bankrupt",
     "ja": "倒産した，破産した",
-    "ipa": "/ˈbæŋkrʌpt/"
+    "ipa": "/ˈbæŋkrʌpt/",
+    "etymology": "bank (ベンチ・両替台) + rupt (割れた) ➔ 両替台が壊れて商売ができない「破産した」"
   },
   "1530": {
     "en": "monetary",
     "ja": "貨幣の／金銭的な",
-    "ipa": "/ˈmɑːnɪteri/"
+    "ipa": "/ˈmɑːnɪteri/",
+    "etymology": "moneta (古代ローマの貨幣鋳造所) ➔ お金に関する「貨幣の」"
   },
   "1531": {
     "en": "corporation",
     "ja": "企業，法人",
-    "ipa": "/ˌkɔːrpəˈreɪʃn/"
+    "ipa": "/ˌkɔːrpəˈreɪʃn/",
+    "etymology": "corp (体) + ation ➔ 法律上の身体を与えられた「企業・法人」"
   },
   "1532": {
     "en": "enterprise",
     "ja": "企業／(冒険的な)事業",
-    "ipa": "/ˈentərpraɪz/"
+    "ipa": "/ˈentərpraɪz/",
+    "etymology": "entre- (間に) + prehend (掴む) ➔ 冒険的に乗り出す「企業・事業」"
   },
   "1533": {
     "en": "venture",
     "ja": "事業／危険を冒して行く",
-    "ipa": "/ˈventʃər/"
+    "ipa": "/ˈventʃər/",
+    "etymology": "adventure の短縮 ➔ 危険を伴う冒険的「事業」"
   },
   "1534": {
     "en": "headquarters",
     "ja": "本社，本部",
-    "ipa": "/ˈhedkwɔːrtərz/"
+    "ipa": "/ˈhedkwɔːrtərz/",
+    "etymology": "head (頭) + quarters (宿舎) ➔ 指揮をとる中心地「本社・本部」"
   },
   "1535": {
     "en": "personnel",
     "ja": "(官庁，会社などの)全職員〈複数扱い〉／人事",
-    "ipa": "/ˌpɜːrsəˈnel/"
+    "ipa": "/ˌpɜːrsəˈnel/",
+    "etymology": "person (人) + el ➔ 組織に属する人「全職員・人事」"
   },
   "1536": {
     "en": "entrepreneur",
     "ja": "起業家",
-    "ipa": "/ˌɑːntrəprəˈnɜːr/"
+    "ipa": "/ˌɑːntrəprəˈnɜːr/",
+    "etymology": "entre- (間に) + prehend (掴む) ➔ 自ら機会を掴んで起業する「起業家」"
   },
   "1537": {
     "en": "predecessor",
     "ja": "前任者，以前あったもの",
-    "ipa": "/ˈpriːdəsesər/"
+    "ipa": "/ˈpriːdəsesər/",
+    "etymology": "pre- (前) + de- + cess (行く) ➔ 前に行っていた人「前任者」"
   },
   "1538": {
     "en": "toil",
     "ja": "(長時間)骨折して働く／骨の折れる仕事",
-    "ipa": "/tɔɪl/"
+    "ipa": "/tɔɪl/",
+    "etymology": "tilt(揺れ動く・もがく)由来 ➔ 骨を折って激しく働く「骨折り仕事」"
   },
   "1539": {
     "en": "undertake",
     "ja": "(仕事など)を引き受ける，始める",
-    "ipa": "/ˌʌndərˈteɪk/"
+    "ipa": "/ˌʌndərˈteɪk/",
+    "etymology": "under (下に) + take (取る) ➔ 重責を自ら引き受けて「始める・着手する」"
   },
   "1540": {
     "en": "merge",
     "ja": "合併する／～を合併させる",
-    "ipa": "/mɜːrdʒ/"
+    "ipa": "/mɜːrdʒ/",
+    "etymology": "merg (沈む・溶け込む) ➔ 一つに溶け込んで「合併する」"
   },
   "1541": {
     "en": "comprise",
     "ja": "～から成る／(割合)を占める",
-    "ipa": "/kəmˈpraɪz/"
+    "ipa": "/kəmˈpraɪz/",
+    "etymology": "com- (共に) + prehend (掴む) ➔ 全体を包み込んで「～から成る」"
   },
   "1542": {
     "en": "component",
     "ja": "構成要素，成分，(車などの)部品",
-    "ipa": "/kəmˈpoʊnənt/"
+    "ipa": "/kəmˈpoʊnənt/",
+    "etymology": "com- (共に) + pon (置く) ➔ 一緒に置かれて全体を構成する「構成要素」"
   },
   "1543": {
     "en": "framework",
     "ja": "枠組／骨組み",
-    "ipa": "/ˈfreɪmwɜːrk/"
+    "ipa": "/ˈfreɪmwɜːrk/",
+    "etymology": "frame (枠) + work (制作物) ➔ 全体を支える「枠組み」"
   },
   "1544": {
     "en": "prototype",
     "ja": "(of [for] ～)(～の)原型／試作品／典型",
-    "ipa": "/ˈproʊtətaɪp/"
+    "ipa": "/ˈproʊtətaɪp/",
+    "etymology": "proto (最初の) + type (型) ➔ 最初に作ったモデル「試作品・原型」"
   },
   "1545": {
     "en": "dimension",
     "ja": "(問題などの)側面，要因，次元／(-s)寸法，大きさ",
-    "ipa": "/dɪˈmenʃn/"
+    "ipa": "/dɪˈmenʃn/",
+    "etymology": "di- (徹底的に) + mens (測る) ➔ 測定された広がりや「次元・側面」"
   },
   "1546": {
     "en": "margin",
     "ja": "余白，欄外／(票などの)差／端",
-    "ipa": "/ˈmɑːrdʒɪn/"
+    "ipa": "/ˈmɑːrdʒɪn/",
+    "etymology": "margo (端・境界) ➔ 本の端の「余白・差」"
   },
   "1547": {
     "en": "excel",
     "ja": "(in [at] ～)( ～において)優れている",
-    "ipa": "/ɪkˈsel/"
+    "ipa": "/ɪkˈsel/",
+    "etymology": "ex- (外へ) + cel (上昇する) ➔ 他より高く抜け出て「優れている」"
   },
   "1548": {
     "en": "contradict",
     "ja": "～と矛盾する／～に反論する",
-    "ipa": "/ˌkɑːntrəˈdɪkt/"
+    "ipa": "/ˌkɑːntrəˈdɪkt/",
+    "etymology": "contra- (反対に) + dict (言う) ➔ 反対のことを言って「矛盾する・反論する」"
   },
   "1549": {
     "en": "consensus",
     "ja": "(意見や証言などの)合意，総意",
-    "ipa": "/kənˈsensəs/"
+    "ipa": "/kənˈsensəs/",
+    "etymology": "con- (共に) + sens (感じる) ➔ 全員が同じように感じること「合意」"
   },
   "1550": {
     "en": "converse",
     "ja": "正反対／正反対の／(with ～)(～と)会話する",
-    "ipa": "/kənˈvɜːrs/"
+    "ipa": "/kənˈvɜːrs/",
+    "etymology": "con- (共に) + vers (向きを変える) ➔ 互いに向き合って話す「会話する・正反対」"
   },
   "1551": {
     "en": "inequality",
     "ja": "不平等",
-    "ipa": "/ˌɪnɪˈkwɑːləti/"
+    "ipa": "/ˌɪnɪˈkwɑːləti/",
+    "etymology": "in- (不) + equal (等しい) ➔ 平等でない状態「不平等」"
   },
   "1552": {
     "en": "equivalent",
     "ja": "等しい／同等のもの",
-    "ipa": "/ɪˈkwɪvələnt/"
+    "ipa": "/ɪˈkwɪvələnt/",
+    "etymology": "equi (等しい) + val (価値) ➔ 価値が等しい「同等のもの」"
   },
   "1553": {
     "en": "compatible",
     "ja": "(with ～)(～と)適合する，互換性がある",
-    "ipa": "/kəmˈpætəbl/"
+    "ipa": "/kəmˈpætəbl/",
+    "etymology": "com- (共に) + pati (耐える・感じる) ➔ 一緒にやっていける「適合する」"
   },
   "1554": {
     "en": "identical",
     "ja": "同一の，うり二つの",
-    "ipa": "/aɪˈdentɪkl/"
+    "ipa": "/aɪˈdentɪkl/",
+    "etymology": "ident (同じ) + ical ➔ まったく同じ「同一の」"
   },
   "1555": {
     "en": "correspond",
     "ja": "(to [with] ～)(～と)一致する／(with ～)(～と)(手紙などで)やりとりをする",
-    "ipa": "/ˌkɔːrəˈspɑːnd/"
+    "ipa": "/ˌkɔːrəˈspɑːnd/",
+    "etymology": "con- (共に) + re- + spond (約束する) ➔ 相互に応答して「一致する・通信する」"
   },
   "1556": {
     "en": "random",
     "ja": "無作為の，でたらめの",
-    "ipa": "/ˈrændəm/"
+    "ipa": "/ˈrændəm/",
+    "etymology": "rand (速い走り) ➔ 勢い任せの「無作為の」"
   },
   "1557": {
     "en": "warrior",
     "ja": "戦士",
-    "ipa": "/ˈwɔːriər/"
+    "ipa": "/ˈwɔːriər/",
+    "etymology": "war (戦争) + ior ➔ 戦う人「戦士」"
   },
   "1558": {
     "en": "assault",
     "ja": "襲撃，暴行",
-    "ipa": "/əˈsɔːlt/"
+    "ipa": "/əˈsɔːlt/",
+    "etymology": "ad- (～に) + salt (跳ぶ) ➔ 相手に跳びかかって「襲撃する」"
   },
   "1559": {
     "en": "troop",
     "ja": "(-s)軍隊",
-    "ipa": "/truːp/"
+    "ipa": "/truːp/",
+    "etymology": "thorp (集落) ➔ 集まった兵士「軍隊」"
   },
   "1560": {
     "en": "shield",
     "ja": "(against ～)(～に対する)盾、防御物",
-    "ipa": "/ʃiːld/"
+    "ipa": "/ʃiːld/",
+    "etymology": "木の板(shield)で身体を守る「盾」"
   },
   "1561": {
     "en": "torture",
     "ja": "拷問／辛いこと／～を拷問にかける",
-    "ipa": "/ˈtɔːrtʃər/"
+    "ipa": "/ˈtɔːrtʃər/",
+    "etymology": "tort (捻じる) + ure ➔ 体をねじりあげる「拷問」"
   },
   "1562": {
     "en": "dispute",
     "ja": "論争，紛争／～に異議を唱える",
-    "ipa": "/dɪˈspjuːt/"
+    "ipa": "/dɪˈspjuːt/",
+    "etymology": "dis- (反対に) + put (考える) ➔ 意見を戦わせる「論争」"
   },
   "1563": {
     "en": "combat",
     "ja": "戦闘／～と戦う",
-    "ipa": "/ˈkɑːmbæt/"
+    "ipa": "/ˈkɑːmbæt/",
+    "etymology": "com- (共に) + bat (打つ) ➔ 互いに叩き合う「戦闘」"
   },
   "1564": {
     "en": "tactics",
     "ja": "戦術",
-    "ipa": "/ˈtæktɪks/"
+    "ipa": "/ˈtæktɪks/",
+    "etymology": "tact (配置する) ➔ 兵をどう配置するかという「戦術」"
   },
   "1565": {
     "en": "quarrel",
     "ja": "(with ～)(～と)口論する／口論",
-    "ipa": "/ˈkwɔːrəl/"
+    "ipa": "/ˈkwɔːrəl/",
+    "etymology": "queri (不平を言う) ➔ 口論して腹を立てる「言い争う」"
   },
   "1566": {
     "en": "contend",
     "ja": "(with ～)(～と)戦う／(that SV)(～と)(強く)主張する",
-    "ipa": "/kənˈtend/"
+    "ipa": "/kənˈtend/",
+    "etymology": "con- (共に) + tend (伸ばす) ➔ 互いに競い合って「戦う・主張する」"
   },
   "1567": {
     "en": "slaughter",
     "ja": "～を虐殺する，(食肉用に)殺す",
-    "ipa": "/ˈslɔːtər/"
+    "ipa": "/ˈslɔːtər/",
+    "etymology": "slay(殺す)と同根 ➔ 大量に「虐殺する」"
   },
   "1568": {
     "en": "suppress",
     "ja": "(反乱，暴動)を鎮圧する／(笑い，怒り)を抑える",
-    "ipa": "/səˈpres/"
+    "ipa": "/səˈpres/",
+    "etymology": "sub- (下に) + press (押す) ➔ 下に押しつけて「鎮圧する・抑える」"
   },
   "1569": {
     "en": "surrender",
     "ja": "(to ～)(～に)降伏する／～を引き渡す",
-    "ipa": "/səˈrendər/"
+    "ipa": "/səˈrendər/",
+    "etymology": "sur- (上に) + render (渡す) ➔ 降参して権利を「引き渡す」"
   },
   "1570": {
     "en": "hostile",
     "ja": "敵意のある／敵の／(環境などが)厳しい",
-    "ipa": "/ˈhɑːstl/"
+    "ipa": "/ˈhɑːstl/",
+    "etymology": "host (敵・見知らぬ人) ➔ 敵意を持っている「敵意のある」"
   },
   "1571": {
     "en": "wreck",
     "ja": "(乗り物，家の)残骸／(健康を損ね)ボロボロの人",
-    "ipa": "/rek/"
+    "ipa": "/rek/",
+    "etymology": "wreak(不運をもたらす) ➔ 破壊された船や人の「残骸」"
   },
   "1572": {
     "en": "toll",
     "ja": "犠牲[死者]者(数)，被害／(高速道路などの)通行料／通話料",
-    "ipa": "/toʊl/"
+    "ipa": "/toʊl/",
+    "etymology": "tell (カウントする) ➔ 犠牲者のカウント「犠牲者数・通行料」"
   },
   "1573": {
     "en": "disrupt",
     "ja": "(活動の進行など)をかき乱す",
-    "ipa": "/dɪsˈrʌpt/"
+    "ipa": "/dɪsˈrʌpt/",
+    "etymology": "dis- (バラバラに) + rupt (壊す) ➔ 進行をぶち壊して「乱す」"
   },
   "1574": {
     "en": "interfere",
     "ja": "(with ～)(～を)邪魔する，干渉する",
-    "ipa": "/ˌɪntərˈfɪər/"
+    "ipa": "/ˌɪntərˈfɪər/",
+    "etymology": "inter- (間に) + fere (打つ) ➔ 割り込んで「邪魔する」"
   },
   "1575": {
     "en": "confront",
     "ja": "(困難などが人)に立ちふさがる／(人が困難など)に直面する，立ち向かう",
-    "ipa": "/kənˈfrʌnt/"
+    "ipa": "/kənˈfrʌnt/",
+    "etymology": "con- (共に) + front (額・正面) ➔ 正面から向き合って「直面する」"
   },
   "1576": {
     "en": "explode",
     "ja": "爆発する／爆発的に増加する",
-    "ipa": "/ɪkˈspoʊd/"
+    "ipa": "/ɪkˈspoʊd/",
+    "etymology": "ex- (外へ) + plod (手を叩く・爆音) ➔ 破裂して「爆発する」"
   },
   "1577": {
     "en": "collide",
     "ja": "(with ～)(～と)衝突する",
-    "ipa": "/kəˈlaɪd/"
+    "ipa": "/kəˈlaɪd/",
+    "etymology": "com- (共に) + lid (打つ) ➔ 激しくぶつかり合って「衝突する」"
   },
   "1578": {
     "en": "nephew",
     "ja": "甥",
-    "ipa": "/ˈnefjuː/"
+    "ipa": "/ˈnefjuː/",
+    "etymology": "nepotism(身内びいき)と同根の「甥」"
   },
   "1579": {
     "en": "infant",
     "ja": "(主に歩く前の)幼児",
-    "ipa": "/ˈɪnfənt/"
+    "ipa": "/ˈɪnfənt/",
+    "etymology": "in- (不) + fant (話す) ➔ まだ言葉を話せない「乳幼児」"
   },
   "1580": {
     "en": "spouse",
     "ja": "配偶者",
-    "ipa": "/spaʊs/"
+    "ipa": "/spaʊs/",
+    "etymology": "spond (誓う) ➔ 誓いを交わした相手「配偶者」"
   },
   "1581": {
     "en": "heir",
     "ja": "相続人，後継者",
-    "ipa": "/er/"
+    "ipa": "/er/",
+    "etymology": "inherit(相続する)と同根の「相続人」"
   },
   "1582": {
     "en": "folk",
     "ja": "人-／民間(起源)の",
-    "ipa": "/foʊk/"
+    "ipa": "/foʊk/",
+    "etymology": "庶民・一般の人々「人々・民間の」"
   },
   "1583": {
     "en": "peer",
     "ja": "(-s)同等の人，同輩／(よく見えなくて)じっと見る",
-    "ipa": "/pɪər/"
+    "ipa": "/pɪər/",
+    "etymology": "par (等しい) ➔ 社会的立場が等しい「同輩」"
   },
   "1584": {
     "en": "recipient",
     "ja": "受け取る人，被移植者",
-    "ipa": "/rɪˈsɪpiənt/"
+    "ipa": "/rɪˈsɪpiənt/",
+    "etymology": "re- (後ろへ) + cip (取る) ➔ 受け取り側に立つ「受取人」"
   },
   "1585": {
     "en": "navigate",
     "ja": "(旅などで)進路を決める／～を克服して進む，～を航行する",
-    "ipa": "/ˈnævɪɡeɪt/"
+    "ipa": "/ˈnævɪɡeɪt/",
+    "etymology": "nav (船) + ag (動かす) ➔ 船を動かして「進路を決める」"
   },
   "1586": {
     "en": "flee",
     "ja": "逃亡する",
-    "ipa": "/fliː/"
+    "ipa": "/fliː/",
+    "etymology": "fly(飛ぶ)と同根 ➔ 飛ぶように「逃亡する」"
   },
   "1587": {
     "en": "retreat",
     "ja": "退く／撤退，退却",
-    "ipa": "/rɪˈtriːt/"
+    "ipa": "/rɪˈtriːt/",
+    "etymology": "re- (後ろへ) + treat (引く) ➔ 後ろへ退いて「撤退する」"
   },
   "1588": {
     "en": "crawl",
     "ja": "這って進む，(渋滞などで)這うように進む",
-    "ipa": "/krɔːl/"
+    "ipa": "/krɔːl/",
+    "etymology": "四つん這いで進む動作由来の「這う」"
   },
   "1589": {
     "en": "hover",
     "ja": "(鳥などが)空中にとどまる／うろつく，さまよう",
-    "ipa": "/ˈhʌvər/"
+    "ipa": "/ˈhʌvər/",
+    "etymology": "鳥が空中にとどまる動作由来の「ホバリングする」"
   },
   "1590": {
     "en": "drift",
     "ja": "漂う",
-    "ipa": "/drɪft/"
+    "ipa": "/drɪft/",
+    "etymology": "drive(押し流す)と同根 ➔ 水や風に「漂う」"
   },
   "1591": {
     "en": "alter",
     "ja": "～を変える",
-    "ipa": "/ˈɔːltər/"
+    "ipa": "/ˈɔːltər/",
+    "etymology": "ali (別の) ➔ 別の状態に「変える」"
   },
   "1592": {
     "en": "convert",
     "ja": "(A into B)(A)を(B に)転換する／～を改宗させる",
-    "ipa": "/kənˈvɜːrt/"
+    "ipa": "/kənˈvɜːrt/",
+    "etymology": "con- (完全に) + vert (向きを変える) ➔ 別の形に「転換する」"
   },
   "1593": {
     "en": "overtake",
     "ja": "～を追い越す",
-    "ipa": "/ˌoʊvərˈteɪk/"
+    "ipa": "/ˌoʊvərˈteɪk/",
+    "etymology": "over (上・超えて) + take (取る) ➔ 追いついて「追い越す」"
   },
   "1594": {
     "en": "dispatch",
     "ja": "(使者・軍隊など)を派遣する，(物資など)を送る",
-    "ipa": "/dɪˈspætʃ/"
+    "ipa": "/dɪˈspætʃ/",
+    "etymology": "dis- (解いて) + pes (足) ➔ 束縛を解いて急ぎ「派遣する」"
   },
   "1595": {
     "en": "shrink",
     "ja": "縮む／(数量が)減る／～を縮ませる，減らす",
-    "ipa": "/ʃrɪŋk/"
+    "ipa": "/ʃrɪŋk/",
+    "etymology": "身体を小さくすくめる動作から「縮む」"
   },
   "1596": {
     "en": "wither",
     "ja": "しおれる，しぼむ",
-    "ipa": "/ˈwɪðər/"
+    "ipa": "/ˈwɪðər/",
+    "etymology": "weather(天候)の風雨にさらされて草木が「枯れる」"
   },
   "1597": {
     "en": "descend",
     "ja": "降下する",
-    "ipa": "/dɪˈsend/"
+    "ipa": "/dɪˈsend/",
+    "etymology": "de- (下へ) + scand (登る) ➔ 階段を降りるように「降下する」"
   },
   "1598": {
     "en": "accelerate",
     "ja": "～を加速する",
-    "ipa": "/əkˈseləreɪt/"
+    "ipa": "/əkˈseləreɪt/",
+    "etymology": "ad- (～へ) + celer (速い) ➔ 速度を上げて「加速する」"
   },
   "1599": {
     "en": "fluctuate",
     "ja": "(数値，物価が)変動する",
-    "ipa": "/ˈflʌktʃueɪt/"
+    "ipa": "/ˈflʌktʃueɪt/",
+    "etymology": "flu (流れる) ➔ 波のように揺れ動いて「変動する」"
   },
   "1600": {
     "en": "distort",
     "ja": "～を歪める",
-    "ipa": "/dɪˈstɔːrt/"
+    "ipa": "/dɪˈstɔːrt/",
+    "etymology": "dis- (離れて) + tort (捻じる) ➔ ねじ曲げて「歪める」"
   },
   "1601": {
     "en": "crack",
     "ja": "割れる，砕ける／(パンと)音を出す／～を割る，砕く／割れ目",
-    "ipa": "/kræk/"
+    "ipa": "/kræk/",
+    "etymology": "鋭い音を立てて割れる擬音語由来「割れる」"
   },
   "1602": {
     "en": "transition",
     "ja": "移り変わり，推移",
-    "ipa": "/trænˈzɪʃn/"
+    "ipa": "/trænˈzɪʃn/",
+    "etymology": "trans- (越えて) + it (行く) ➔ 状態が移り変わる「推移」"
   },
   "1603": {
     "en": "game changer",
     "ja": "革命的なこと[人・物]",
-    "ipa": "/ɡeɪm ˈtʃeɪndʒər/"
+    "ipa": "/ɡeɪm ˈtʃeɪndʒər/",
+    "etymology": "game (試合・局面) + changer ➔ 局面を一変させる「革命的な人物・出来事」"
   },
   "1604": {
     "en": "reinforce",
     "ja": "～を補強する",
-    "ipa": "/ˌriːɪnˈfɔːrs/"
+    "ipa": "/ˌriːɪnˈfɔːrs/",
+    "etymology": "re- (再び) + in- + force (力) ➔ 再び力を加えて「補強する」"
   },
   "1605": {
     "en": "foster",
     "ja": "(才能など)を育成する／～の里親になる／里親の",
-    "ipa": "/ˈfɑːstər/"
+    "ipa": "/ˈfɑːstər/",
+    "etymology": "food(食べ物)と同根 ➔ 養育して「育成する」"
   },
   "1606": {
     "en": "breakdown",
     "ja": "崩壊／故障／衰弱",
-    "ipa": "/ˈbreɪkdaʊn/"
+    "ipa": "/ˈbreɪkdaʊn/",
+    "etymology": "break (壊れて) + down (落ちる) ➔ システムなどの「崩壊・故障」"
   },
   "1607": {
     "en": "collapse",
     "ja": "崩壊する，倒れる／崩壊，倒れること",
-    "ipa": "/kəˈlæps/"
+    "ipa": "/kəˈlæps/",
+    "etymology": "com- (共に) + lapse (すべる) ➔ 一気に崩れ落ちて「崩壊する」"
   },
   "1608": {
     "en": "render",
     "ja": "(SVOC)(O)を(C)にする／(援助など)を与える",
-    "ipa": "/ˈrendər/"
+    "ipa": "/ˈrendər/",
+    "etymology": "re- (戻して) + dore (与える) ➔ ある状態に「する・与える」"
   },
   "1609": {
     "en": "impair",
     "ja": "(人間の機能など)を低下させる，損なう",
-    "ipa": "/ɪmˈper/"
+    "ipa": "/ɪmˈper/",
+    "etymology": "im- (中に) + pejor (悪く) ➔ 機能を「低下させる・損なう」"
   },
   "1610": {
     "en": "undermine",
     "ja": "～を弱める，揺るがす",
-    "ipa": "/ˌʌndərˈmaɪn/"
+    "ipa": "/ˌʌndərˈmaɪn/",
+    "etymology": "under (下に) + mine (坑道を掘る) ➔ 足元を掘り崩して「土台を揺るがす」"
   },
   "1611": {
     "en": "cope",
     "ja": "(with～)(～に)対処する",
-    "ipa": "/koʊp/"
+    "ipa": "/koʊp/",
+    "etymology": "coup(叩く)と同根 ➔ 困難と戦って「対処する」"
   },
   "1612": {
     "en": "tackle",
     "ja": "～に取り組む",
-    "ipa": "/ˈtækl/"
+    "ipa": "/ˈtækl/",
+    "etymology": "船の用具(tackle)で相手を引っ捕らえる「取り組む」"
   },
   "1613": {
     "en": "demolish",
     "ja": "(建物など)を取り壊す",
-    "ipa": "/dɪˈmɑːlɪʃ/"
+    "ipa": "/dɪˈmɑːlɪʃ/",
+    "etymology": "de- (解体) + mole (建造物) ➔ 建造物を「取り取り壊す」"
   },
   "1614": {
     "en": "confine",
     "ja": "～を閉じ込める／(活動など)を制限する",
-    "ipa": "/kənˈfaɪn/"
+    "ipa": "/kənˈfaɪn/",
+    "etymology": "con- (共に) + fin (境界) ➔ 枠の中に「閉じ込める」"
   },
   "1615": {
     "en": "designate",
     "ja": "(通例，受け身で)～を指定する",
-    "ipa": "/ˈdezɪɡneɪt/"
+    "ipa": "/ˈdezɪɡneɪt/",
+    "etymology": "de- (明確に) + sign (署名・印) ➔ 印をつけて「指定する」"
   },
   "1616": {
     "en": "regulate",
     "ja": "(主に規則によって)～を規制する／(機器など)を調整する",
-    "ipa": "/ˈreɡjuleɪt/"
+    "ipa": "/ˈreɡjuleɪt/",
+    "etymology": "reg (ルール・定規) ➔ 規則に従って「規制する」"
   },
   "1617": {
     "en": "refrain",
     "ja": "(from ～)(～を)控える",
-    "ipa": "/rɪˈfreɪn/"
+    "ipa": "/rɪˈfreɪn/",
+    "etymology": "re- (後ろへ) + fren (手綱) ➔ 手綱を引いて自重する「控える」"
   },
   "1618": {
     "en": "prohibit",
     "ja": "～を禁じる",
-    "ipa": "/prəˈhɪbɪt/"
+    "ipa": "/prəˈhɪbɪt/",
+    "etymology": "pro- (前に) + hibit (置く・持つ) ➔ 手を前に出して制止する「禁じる」"
   },
   "1619": {
     "en": "halt",
     "ja": "～を止める／止まる／停止",
-    "ipa": "/hɔːlt/"
+    "ipa": "/hɔːlt/",
+    "etymology": "hold(止める)と同根 ➔ 一時的に「停止する」"
   },
   "1620": {
     "en": "constraint",
     "ja": "制約",
-    "ipa": "/kənˈstreɪnt/"
+    "ipa": "/kənˈstreɪnt/",
+    "etymology": "con- (共に) + string (縛る) ➔ 固く縛りつける「制約」"
   },
   "1621": {
     "en": "stimulate",
     "ja": "～を刺激する",
-    "ipa": "/ˈstɪmjuleɪt/"
+    "ipa": "/ˈstɪmjuleɪt/",
+    "etymology": "stimul (尖った棒で突く) ➔ 突いて「刺激する」"
   },
   "1622": {
     "en": "animate",
     "ja": "～を活気づける／～をアニメ化する",
-    "ipa": "/ˈænɪmeɪt/"
+    "ipa": "/ˈænɪmeɪt/",
+    "etymology": "anim (生命・魂) ➔ 魂を吹き込んで「活気づける」"
   },
   "1623": {
     "en": "spur",
     "ja": "～を駆り立てる，促す／拍車，刺激，動機",
-    "ipa": "/spɜːr/"
+    "ipa": "/spɜːr/",
+    "etymology": "馬の拍車(spur)で蹴り上げて「駆り立てる」"
   },
   "1624": {
     "en": "urge",
     "ja": "～をせき立てる，～に強く勧める／(何かがしたい)衝動",
-    "ipa": "/ɜːrdʒ/"
+    "ipa": "/ɜːrdʒ/",
+    "etymology": "urg (強く押す) ➔ 強く押して「せき立てる」"
   },
   "1625": {
     "en": "compel",
     "ja": "(A to do)(A)に(～することを)強制する",
-    "ipa": "/kəmˈpel/"
+    "ipa": "/kəmˈpel/",
+    "etymology": "com- (強力に) + pel (押す) ➔ 力ずくで「強制する」"
   },
   "1626": {
     "en": "blur",
     "ja": "～をぼやかす／ぼやける",
-    "ipa": "/blɜːr/"
+    "ipa": "/blɜːr/",
+    "etymology": "blister(水ぶくれ)・曇った視界「ぼやかす」"
   },
   "1627": {
     "en": "divert",
     "ja": "(川など)の方向を変える／(注意など)をそらす",
-    "ipa": "/daɪˈvɜːrt/"
+    "ipa": "/daɪˈvɜːrt/",
+    "etymology": "di- (離れて) + vert (向ける) ➔ 進行方向を「そらす」"
   },
   "1628": {
     "en": "reverse",
     "ja": "～を逆転する，覆す／逆／逆の",
-    "ipa": "/rɪˈvɜːrs/"
+    "ipa": "/rɪˈvɜːrs/",
+    "etymology": "re- (後ろへ) + vert (向ける) ➔ あべこべに「逆転する」"
   },
   "1629": {
     "en": "overshadow",
     "ja": "～の影を薄くさせる",
-    "ipa": "/ˌoʊvərˈʃædoʊ/"
+    "ipa": "/ˌoʊvərˈʃædoʊ/",
+    "etymology": "over (上から) + shadow (影) ➔ 影を落として「存在感を薄くする」"
   },
   "1630": {
     "en": "worsen",
     "ja": "～を悪化させる",
-    "ipa": "/ˈwɜːrsn/"
+    "ipa": "/ˈwɜːrsn/",
+    "etymology": "worse (より悪い) + en ➔ さらに「悪化させる」"
   },
   "1631": {
     "en": "jeopardize",
     "ja": "(生命，経歴，制度など)を危険にさらす",
-    "ipa": "/ˈdʒepərdaɪz/"
+    "ipa": "/ˈdʒepərdaɪz/",
+    "etymology": "jeu parti (五分五分の勝負・危険) ➔ 生命などを「危険にさらす」"
   },
   "1632": {
     "en": "supplement",
     "ja": "(栄養，収入など)を補う／補充，栄養補助食品／付録",
-    "ipa": "/ˈsʌplɪmənt/"
+    "ipa": "/ˈsʌplɪmənt/",
+    "etymology": "sub- (下から) + ple (満たす) ➔ 不足分を満たす「補う・サプリメント」"
   },
   "1633": {
     "en": "pose",
     "ja": "～をもたらす",
-    "ipa": "/poʊz/"
+    "ipa": "/poʊz/",
+    "etymology": "pose (姿勢をとる) ➔ 状態や問題を生じさせて「もたらす」"
   },
   "1634": {
     "en": "induce",
     "ja": "～を引き起こす／((人)to do)(人)に～するよう説得する",
-    "ipa": "/ɪnˈduːs/"
+    "ipa": "/ɪnˈduːs/",
+    "etymology": "in- (中に) + duc (導く) ➔ ある状態へ「引き起こす」"
   },
   "1635": {
     "en": "betray",
     "ja": "～を裏切る／～を漏らす，(うっかり)さらけ出す",
-    "ipa": "/bɪˈtreɪ/"
+    "ipa": "/bɪˈtreɪ/",
+    "etymology": "be- (完全に) + trad (渡す) ➔ 敵に情報を手渡して「裏切る」"
   },
   "1636": {
     "en": "bully",
     "ja": "～をいじめる／いじめっ子",
-    "ipa": "/ˈbʊli/"
+    "ipa": "/ˈbʊli/",
+    "etymology": "威張り散らすいじめっ子「いじめる」"
   },
   "1637": {
     "en": "disregard",
     "ja": "～を無視する",
-    "ipa": "/ˌdɪsrɪˈɡɑːrd/"
+    "ipa": "/ˌdɪsrɪˈɡɑːrd/",
+    "etymology": "dis- (不) + regard (注視する) ➔ 目を向けずに「無視する」"
   },
   "1638": {
     "en": "squeeze",
     "ja": "(果汁など)を搾る／(手，指で)～を強く押す",
-    "ipa": "/skwiːz/"
+    "ipa": "/skwiːz/",
+    "etymology": "強く締め付ける動作由来の「搾る」"
   },
   "1639": {
     "en": "rub",
     "ja": "～をこする／(against ～)( ～に)こすりつける",
-    "ipa": "/rʌb/"
+    "ipa": "/rʌb/",
+    "etymology": "表面を摩擦する動作「こする」"
   },
   "1640": {
     "en": "smash",
     "ja": "～を粉砕する",
-    "ipa": "/smæʃ/"
+    "ipa": "/smæʃ/",
+    "etymology": "激しい力で粉々にする「粉砕する」"
   },
   "1641": {
     "en": "insert",
     "ja": "～を差し込む／(語句など)を書き込む",
-    "ipa": "/ɪnˈsɜːrt/"
+    "ipa": "/ɪnˈsɜːrt/",
+    "etymology": "in- (中に) + sert (繋ぐ) ➔ 間に挟み込んで「差し込む」"
   },
   "1642": {
     "en": "detach",
     "ja": "(A from B)(A)を(B から)切り離す",
-    "ipa": "/dɪˈtætʃ/"
+    "ipa": "/dɪˈtætʃ/",
+    "etymology": "de- (離して) + attach (取り付ける) ➔ 接合部を「切り離す」"
   },
   "1643": {
     "en": "withdraw",
     "ja": "～を引っ込める／(預金など)を引き出す／退く",
-    "ipa": "/wɪðˈdrɔː/"
+    "ipa": "/wɪðˈdrɔː/",
+    "etymology": "with- (離れて) + draw (引き直す) ➔ 奥へ「引き出す・撤退する」"
   },
   "1644": {
     "en": "compile",
     "ja": "～をまとめる，(辞書などを)編纂する",
-    "ipa": "/kəmˈpaɪl/"
+    "ipa": "/kəmˈpaɪl/",
+    "etymology": "com- (集めて) + pile (積み上げる) ➔ 資料を集めて「まとめる」"
   },
   "1645": {
     "en": "browse",
     "ja": "拾い読みする／～を拾い読みする",
-    "ipa": "/braʊz/"
+    "ipa": "/braʊz/",
+    "etymology": "草芽(browse)を喰むようにパラパラ「拾い読みする」"
   },
   "1646": {
     "en": "manipulate",
     "ja": "～を操作する",
-    "ipa": "/məˈnɪpjuleɪt/"
+    "ipa": "/məˈnɪpjuleɪt/",
+    "etymology": "mani (手) + pul (満たす) ➔ 手で巧みに「操作する」"
   },
   "1647": {
     "en": "implement",
     "ja": "(契約，計画など)を実行する／(単純な)道具",
-    "ipa": "/ˈɪmplɪment/"
+    "ipa": "/ˈɪmplɪment/",
+    "etymology": "in- (中に) + ple (満たす) ➔ 計画を満たして「実行する」"
   },
   "1648": {
     "en": "execute",
     "ja": "～を遂行する，実行する／～を処刑する",
-    "ipa": "/ˈeksɪkjuːt/"
+    "ipa": "/ˈeksɪkjuːt/",
+    "etymology": "ex- (最後まで) + secut (従う) ➔ 計画を最後までやり切って「遂行する」"
   },
   "1649": {
     "en": "host",
     "ja": "～を主催する／(a – of)多くの／(客を接待する)主人，主催者，開催地，≪生物≫宿主",
-    "ipa": "/hoʊst/"
+    "ipa": "/hoʊst/",
+    "etymology": "guest(客)をもてなす「主催者・主催する」"
   },
   "1650": {
     "en": "mount",
     "ja": "～を据え付ける／(馬，自転車)に乗る／増加する",
-    "ipa": "/maʊnt/"
+    "ipa": "/maʊnt/",
+    "etymology": "mountain(山)と同根 ➔ 上に「据え付ける・乗る」"
   },
   "1651": {
     "en": "discharge",
     "ja": "～を排出する／(職務，任地などから)～を解放する",
-    "ipa": "/dɪsˈtʃɑːrdʒ/"
+    "ipa": "/dɪsˈtʃɑːrdʒ/",
+    "etymology": "dis- (外へ) + charge (荷物) ➔ 荷や液体を外へ「排出する・解放する」"
   },
   "1652": {
     "en": "drain",
     "ja": "～の水を抜く／～の水分を切る／(液体が)流出する，乾く",
-    "ipa": "/dreɪn/"
+    "ipa": "/dreɪn/",
+    "etymology": "dry(乾く)と同根 ➔ 水をはけさせて「排水する」"
   },
   "1653": {
     "en": "soak",
     "ja": "～を浸す／(up)(日光，考えなど)を吸収する",
-    "ipa": "/soʊk/"
+    "ipa": "/soʊk/",
+    "etymology": "液体にどっぷり浸す「浸す・吸収する」"
   },
   "1654": {
     "en": "dip",
     "ja": "～を(ちょっと)つける，浸す／～を少し下げる",
-    "ipa": "/dɪp/"
+    "ipa": "/dɪp/",
+    "etymology": "deep(深い)と同根 ➔ 液体にちょっと「浸す」"
   },
   "1655": {
     "en": "suspend",
     "ja": "～を吊るす／～を中断する／～を停職[停学]にする",
-    "ipa": "/səˈspend/"
+    "ipa": "/səˈspend/",
+    "etymology": "sub- (下に) + pend (つるす) ➔ 下につるして保留し「一時中断する」"
   },
   "1656": {
     "en": "extract",
     "ja": "～を取り出す，抽出する／抽出したもの，抜粋",
-    "ipa": "/ˈekstrækt/"
+    "ipa": "/ˈekstrækt/",
+    "etymology": "ex- (外へ) + tract (引っ張る) ➔ 引っ張り出して「抽出する」"
   },
   "1657": {
     "en": "slap",
     "ja": "～を平手打ちする",
-    "ipa": "/slæp/"
+    "ipa": "/slæp/",
+    "etymology": "平手で叩く擬音語由来「平手打ちする」"
   },
   "1658": {
     "en": "embrace",
     "ja": "～を抱擁する／(思想など)を受け入れる",
-    "ipa": "/ɪmˈbreɪs/"
+    "ipa": "/ɪmˈbreɪs/",
+    "etymology": "in- (中に) + brace (両腕) ➔ 両腕の中に抱きしめて「受容する」"
   },
   "1659": {
     "en": "embark",
     "ja": "(on ～)(～に)着手する，乗り込む",
-    "ipa": "/ɪmˈbɑːrk/"
+    "ipa": "/ɪmˈbɑːrk/",
+    "etymology": "in- (中に) + bark (船) ➔ 船に乗り込んで「着手する」"
   },
   "1660": {
     "en": "intervene",
     "ja": "(in ～)( ～に)介入する",
-    "ipa": "/ˌɪntərˈviːn/"
+    "ipa": "/ˌɪntərˈviːn/",
+    "etymology": "inter- (間に) + ven (行く) ➔ 間に割って入って「介入する」"
   },
   "1661": {
     "en": "penetrate",
     "ja": "～に入り込む／～を貫通する／貫通する，入る",
-    "ipa": "/ˈpenətreɪt/"
+    "ipa": "/ˈpenətreɪt/",
+    "etymology": "pen (内部) + trate ➔ 奥深くまで「貫通する・入り込む」"
   },
   "1662": {
     "en": "intrude",
     "ja": "(on～)(～に)立ち入る",
-    "ipa": "/ɪnˈtruːd/"
+    "ipa": "/ɪnˈtruːd/",
+    "etymology": "in- (中に) + trud (押し込む) ➔ 無断で「立ち入る」"
   },
   "1663": {
     "en": "utilize",
     "ja": "～を利用する",
-    "ipa": "/ˈjuːtəlaɪz/"
+    "ipa": "/ˈjuːtəlaɪz/",
+    "etymology": "use(使う)と同根 ➔ 役に立つように「利用する」"
   },
   "1664": {
     "en": "embed",
     "ja": "(in…)(…に)～を埋め込む",
-    "ipa": "/ɪmˈbed/"
+    "ipa": "/ɪmˈbed/",
+    "etymology": "in- (中に) + bed (寝床) ➔ 深くしっかりと「埋め込む」"
   },
   "1665": {
     "en": "allocate",
     "ja": "～を割り当てる",
-    "ipa": "/ˈæləkeɪt/"
+    "ipa": "/ˈæləkeɪt/",
+    "etymology": "ad- (～に) + loc (場所) ➔ それぞれの場所に「割り当てる」"
   },
   "1666": {
     "en": "coordinate",
     "ja": "(活動など)をうまく調整する",
-    "ipa": "/koʊˈɔːrdɪneɪt/"
+    "ipa": "/koʊˈɔːrdɪneɪt/",
+    "etymology": "co- (共に) + ordin (順序) ➔ 順序を整えて「調整する」"
   },
   "1667": {
     "en": "blink",
     "ja": "まばたきする",
-    "ipa": "/blɪŋk/"
+    "ipa": "/blɪŋk/",
+    "etymology": "まばたきする素早い動作「まばたきする」"
   },
   "1668": {
     "en": "spin",
     "ja": "ぐるぐる回る／～を回す／～を紡ぐ",
-    "ipa": "/spɪn/"
+    "ipa": "/spɪn/",
+    "etymology": "糸を紡ぐ回転動作から「回転する」"
   },
   "1669": {
     "en": "rotate",
     "ja": "回転する／～を回転させる",
-    "ipa": "/ˈroʊteɪt/"
+    "ipa": "/ˈroʊteɪt/",
+    "etymology": "rota (車輪) ➔ 軸を中心に「回転する」"
   },
   "1670": {
     "en": "scramble",
     "ja": "急いで動く",
-    "ipa": "/ˈskræmbl/"
+    "ipa": "/ˈskræmbl/",
+    "etymology": "這い登ったり先を争って「急いで動く」"
   },
   "1671": {
     "en": "vanish",
     "ja": "消える",
-    "ipa": "/ˈvænɪʃ/"
+    "ipa": "/ˈvænɪʃ/",
+    "etymology": "van (空の) ➔ 煙のように「消える」"
   },
   "1672": {
     "en": "snap",
     "ja": "ポキンと折れる／～をポキンと折る、～をパチンと鳴らす",
-    "ipa": "/snæp/"
+    "ipa": "/snæp/",
+    "etymology": "ポキンと折れる擬音語由来「折れる」"
   },
   "1673": {
     "en": "rattle",
     "ja": "ガタガタ鳴る／～を鳴らす／ガラガラ",
-    "ipa": "/ˈrætl/"
+    "ipa": "/ˈrætl/",
+    "etymology": "ガタガタ音を立てる「ガタガタ鳴る」"
   },
   "1674": {
     "en": "cease",
     "ja": "(to do [doing])～しなくなる",
-    "ipa": "/siːs/"
+    "ipa": "/siːs/",
+    "etymology": "cede(退く)と同根 ➔ 活動を完全に「やめる」"
   },
   "1675": {
     "en": "haste",
     "ja": "急ぐこと",
-    "ipa": "/heɪst/"
+    "ipa": "/heɪst/",
+    "etymology": "急ぎ足で行う動作「急ぐこと」"
   },
   "1676": {
     "en": "conceal",
     "ja": "～を隠す",
-    "ipa": "/kənˈsiːl/"
+    "ipa": "/kənˈsiːl/",
+    "etymology": "con- (完全に) + cel (隠す) ➔ 秘密にして「隠す」"
   },
   "1677": {
     "en": "disguise",
     "ja": "～を(偽装して)隠す／(oneself as ～)～に変装する／変装",
-    "ipa": "/dɪsˈɡaɪz/"
+    "ipa": "/dɪsˈɡaɪz/",
+    "etymology": "dis- (外して) + guise (外見) ➔ 外見を変えて「変装する・隠す」"
   },
   "1678": {
     "en": "deceive",
     "ja": "～をだます",
-    "ipa": "/dɪˈsiːv/"
+    "ipa": "/dɪˈsiːv/",
+    "etymology": "de- (離れて) + cap (取る) ➔ 正道から逸れさせて「だます」"
   },
   "1679": {
     "en": "neglect",
     "ja": "～を怠る，放置する／(子ども)の世話をしない／放置",
-    "ipa": "/nɪˈɡlekt/"
+    "ipa": "/nɪˈɡlekt/",
+    "etymology": "neg- (不) + lect (選ぶ) ➔ 注意を払わずに「怠る・放置する」"
   },
   "1680": {
     "en": "evacuate",
     "ja": "(しばしば受動態で)～を避難させる",
-    "ipa": "/ɪˈvækjueɪt/"
+    "ipa": "/ɪˈvækjueɪt/",
+    "etymology": "e- (外へ) + vacu (空にする) ➔ 誰もいない空にして「避難させる」"
   },
   "1681": {
     "en": "coincide",
     "ja": "(with ～)(～と)同時に起きる／(with ～)(～と)一致する",
-    "ipa": "/ˌkoʊɪnˈsaɪd/"
+    "ipa": "/ˌkoʊɪnˈsaɪd/",
+    "etymology": "co- (共に) + in- + cid (落ちる) ➔ 同時にピッタリ「一致する」"
   },
   "1682": {
     "en": "prevail",
     "ja": "(考え，習慣などが)普及している／(最後に人，考えが)優勢となる",
-    "ipa": "/prɪˈveɪl/"
+    "ipa": "/prɪˈveɪl/",
+    "etymology": "pre- (前で) + vail (強い) ➔ 勢力を伸ばして「普及する・優勢になる」"
   },
   "1683": {
     "en": "sustain",
     "ja": "(生命など)を維持する，支える",
-    "ipa": "/səˈsteɪn/"
+    "ipa": "/səˈsteɪn/",
+    "etymology": "sub- (下から) + ten (保つ) ➔ 下から支え続けて「維持する」"
   },
   "1684": {
     "en": "linger",
     "ja": "(いつまでも)残る／(on)長居する",
-    "ipa": "/ˈlɪŋɡər/"
+    "ipa": "/ˈlɪŋɡər/",
+    "etymology": "long(長い)と同根 ➔ いつまでも消えずに「残る」"
   },
   "1685": {
     "en": "revive",
     "ja": "生き返る，よみがえる／～を生き返らせる",
-    "ipa": "/rɪˈvaɪv/"
+    "ipa": "/rɪˈvaɪv/",
+    "etymology": "re- (再び) + viv (生きる) ➔ 再び意識を取り戻して「よみがえる」"
   },
   "1686": {
     "en": "resume",
     "ja": "～を再開する／再開する／〈米〉履歴書／概要，レジュメ",
-    "ipa": "/rɪˈzjuːm/"
+    "ipa": "/rɪˈzjuːm/",
+    "etymology": "re- (再び) + sume (取る) ➔ 再び中断した位置を取って「再開する」"
   },
   "1687": {
     "en": "outbreak",
     "ja": "発生，勃発",
-    "ipa": "/ˈaʊtbreɪk/"
+    "ipa": "/ˈaʊtbreɪk/",
+    "etymology": "out (外へ) + break (破れる) ➔ 突如破れて生じる「勃発・発生」"
   },
   "1688": {
     "en": "inspect",
     "ja": "～を検査する",
-    "ipa": "/ɪnˈspekt/"
+    "ipa": "/ɪnˈspekt/",
+    "etymology": "in- (中を) + spect (見る) ➔ 細かく中を見て「検査する」"
   },
   "1689": {
     "en": "expedition",
     "ja": "(研究・探求・戦争目的の)探検，遠征／探検隊",
-    "ipa": "/ˌekspəˈdɪʃn/"
+    "ipa": "/ˌekspəˈdɪʃn/",
+    "etymology": "ex- (外へ) + ped (足) ➔ 外部へ足を踏み出す「探検・遠征」"
   },
   "1690": {
     "en": "enroll",
     "ja": "(in ～)(～に)入学する／(be -ed)在籍している",
-    "ipa": "/ɪnˈroʊl/"
+    "ipa": "/ɪnˈroʊl/",
+    "etymology": "in- (中に) + roll (名簿の巻物) ➔ 名簿に載せて「登録・入学する」"
   },
   "1691": {
     "en": "discipline",
     "ja": "(体罰などで)～を躾ける／躾，規律／(学問)分野",
-    "ipa": "/ˈdɪsəplɪn/"
+    "ipa": "/ˈdɪsəplɪn/",
+    "etymology": "disciple(弟子) ➔ 弟子を教育するための「規律・しつける」"
   },
   "1692": {
     "en": "tuition",
     "ja": "〈米〉授業料／(少人数での)授業",
-    "ipa": "/tuˈɪʃn/"
+    "ipa": "/tuˈɪʃn/",
+    "etymology": "tuit (見守る・保護する) ➔ 指導料としての「授業料」"
   },
   "1693": {
     "en": "ethic",
     "ja": "(-s)(社会や職業上の)倫理(観)／(伝統的に守られた)倫理",
-    "ipa": "/ˈeθɪk/"
+    "ipa": "/ˈeθɪk/",
+    "etymology": "ethos (習慣・気風) ➔ 守るべき規範「倫理」"
   },
   "1694": {
     "en": "psychology",
     "ja": "心理学／心理",
-    "ipa": "/saɪˈkɑːlədʒi/"
+    "ipa": "/saɪˈkɑːlədʒi/",
+    "etymology": "psycho (心・魂) + logy (学問) ➔ 心の仕組みを探る「心理学」"
   },
   "1695": {
     "en": "astronomy",
     "ja": "天文学",
-    "ipa": "/əˈstrɑːnəmi/"
+    "ipa": "/əˈstrɑːnəmi/",
+    "etymology": "astro (星) + nomy (法則) ➔ 星の運動法則を学ぶ「天文学」"
   },
   "1696": {
     "en": "archaeologist",
     "ja": "考古学者",
-    "ipa": "/ˌɑːrkiˈɑːlədʒɪst/"
+    "ipa": "/ˌɑːrkiˈɑːlədʒɪst/",
+    "etymology": "archaeo (古代の) + logist ➔ 古代遺跡を研究する「考古学者」"
   },
   "1697": {
     "en": "thesis",
     "ja": "論文／(正式な議論などの)テーマ",
-    "ipa": "/ˈθiːsɪs/"
+    "ipa": "/ˈθiːsɪs/",
+    "etymology": "the (置く) ➔ 定理や命題として置かれた「論文」"
   },
   "1698": {
     "en": "dormitory",
     "ja": "寮",
-    "ipa": "/ˈdɔːrmətɔːri/"
+    "ipa": "/ˈdɔːrmətɔːri/",
+    "etymology": "dorm (眠る) + tory (場所) ➔ 学生が眠る生活施設「寮」"
   },
   "1699": {
     "en": "grasp",
     "ja": "～を理解する／～をつかむ／理解，つかむこと",
-    "ipa": "/ɡræsp/"
+    "ipa": "/ɡræsp/",
+    "etymology": "手を伸ばして掴む動作から「理解する・掴む」"
   },
   "1700": {
     "en": "anticipate",
     "ja": "～を予想する／～を期待する",
-    "ipa": "/ænˈtɪsɪpeɪt/"
+    "ipa": "/ænˈtɪsɪpeɪt/",
+    "etymology": "anti (前もって) + cip (取る) ➔ 前もって受け止めて「予想する・期待する」"
   },
   "2300": {
     "en": "viable",
     "ja": "(計画などが)実行可能な",
-    "ipa": "/ˈvaɪəbl/"
+    "ipa": "/ˈvaɪəbl/",
+    "etymology": "vi (生きる) + able ➔ 生きていける・「実行可能な」"
   }
 }
