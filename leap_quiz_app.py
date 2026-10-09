@@ -296,6 +296,18 @@ st.markdown("""
         margin-bottom: 12px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
+
+    /* Etymology Box */
+    .etym-box {
+        background-color: #FEF3C7;
+        border-left: 4px solid #F59E0B;
+        color: #78350F;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        text-align: left;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -402,6 +414,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
             "en": info["en"],
             "ja": info["ja"],
             "ipa": info.get("ipa", "[ /.../ ]"),
+            "etymology": info.get("etymology", "語源情報なし"),
             "prompt": prompt,
             "correct_ans": correct_ans,
             "options": options,
@@ -444,13 +457,20 @@ show_ipa = st.sidebar.checkbox("🔤 発音記号を表示する", value=bool(in
 
 filter_starred = st.sidebar.checkbox(f"⭐ 範囲内の要復習（{len(st.session_state.starred_words)}件）のみ", value=False)
 
-# Sidebar Button: Review ALL Starred Words
+# Helper function to combine current active stars and all saved star lists
+def get_all_combined_starred_words():
+    combined = set(st.session_state.starred_words)
+    for word_list in st.session_state.saved_star_lists.values():
+        combined.update(word_list)
+    return sorted(list(combined))
+
+# Sidebar Button: Review ALL Starred Words (Active + History)
 st.sidebar.markdown("---")
 st.sidebar.subheader("⭐ 全スター一括復習")
-if st.sidebar.button("⭐ 今までのスター単語を一括復習（全範囲）", use_container_width=True):
-    starred_all = list(st.session_state.starred_words)
-    if not starred_all:
-        st.sidebar.warning("スターに登録されている単語がありません。")
+all_starred_combined = get_all_combined_starred_words()
+if st.sidebar.button(f"⭐ 今までのスター単語を一括復習（計 {len(all_starred_combined)} 問）", use_container_width=True):
+    if not all_starred_combined:
+        st.sidebar.warning("スターに登録・保存されている単語がありません。")
     else:
         save_settings({
             "start_no": start_no,
@@ -461,7 +481,7 @@ if st.sidebar.button("⭐ 今までのスター単語を一括復習（全範囲
         })
         clear_progress()
         st.session_state.quiz_items = prepare_quiz_items(
-            start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=starred_all
+            start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=all_starred_combined
         )
         st.session_state.current_idx = 0
         st.session_state.score = 0
@@ -604,7 +624,7 @@ with tab_quiz:
                         st.rerun()
 
             st.markdown("---")
-            st.subheader("📊 回答結果一覧")
+            st.subheader("📊 回答結果・語源解説一覧")
             for idx, item in enumerate(quiz_items):
                 is_correct = st.session_state.user_answers.get(idx, {}).get("is_correct", False)
                 user_choice = st.session_state.user_answers.get(idx, {}).get("choice", "未回答")
@@ -616,6 +636,8 @@ with tab_quiz:
                     st.write(f"・**正解**: {item['correct_ans']}")
                     if show_ipa:
                         st.write(f"・**発音記号**: {item['ipa']}")
+                    if item.get("etymology"):
+                        st.write(f"・**語源・成り立ち**: {item['etymology']}")
 
         else:
             # Quiz In-Progress Screen
@@ -708,11 +730,17 @@ with tab_quiz:
                 else:
                     st.error(f"❌ **不正解...** 正解は **「 {item['correct_ans']} 」** です。")
                     
-                with st.info("📖 **単語解説**"):
+                with st.info("📖 **単語解説 & 語源**"):
                     st.write(f"・**単語 (No.{item['no']})**: **{item['en']}**")
                     if show_ipa:
                         st.write(f"・**発音記号**: {item['ipa']}")
                     st.write(f"・**意味**: {item['ja']}")
+                    if item.get("etymology"):
+                        st.markdown(f"""
+                        <div class='etym-box'>
+                            💡 <b>語源・成り立ち:</b><br>{item['etymology']}
+                        </div>
+                        """, unsafe_allow_html=True)
 
             # Navigation Buttons (Previous & Next)
             col_nav1, col_nav2 = st.columns(2)
@@ -761,15 +789,17 @@ with tab_quiz:
 with tab_stars:
     st.subheader("⭐ スター単語 & 保存リスト管理")
     
+    all_combined_list = get_all_combined_starred_words()
     current_star_count = len(st.session_state.starred_words)
     
     # Section 1: All Starred Review Button
-    st.markdown("#### 1. 全スター単語の一括復習")
-    st.write(f"現在、スターに登録されている単語: **{current_star_count} 件**")
+    st.markdown("#### 1. スター単語（現在選択中 ＋ 名前つき履歴）の一括復習")
+    st.write(f"・現在スター選択中の単語: **{current_star_count} 件**")
+    st.write(f"・保存済みリスト含む重複なし合計: **{len(all_combined_list)} 件**")
     
     col_st1, col_st2 = st.columns(2)
     with col_st1:
-        if st.button("🚀 現在のスター単語を一括クイズ", type="primary", use_container_width=True, disabled=(current_star_count == 0)):
+        if st.button(f"🚀 スター全単語（計{len(all_combined_list)}問）を一括クイズ", type="primary", use_container_width=True, disabled=(len(all_combined_list) == 0)):
             save_settings({
                 "start_no": start_no,
                 "end_no": end_no,
@@ -779,19 +809,19 @@ with tab_stars:
             })
             clear_progress()
             st.session_state.quiz_items = prepare_quiz_items(
-                start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=list(st.session_state.starred_words)
+                start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=all_combined_list
             )
             st.session_state.current_idx = 0
             st.session_state.score = 0
             st.session_state.user_answers = {}
-            st.success("🎯 スター単語の一括クイズを開始します！「🎯 クイズを解く」タブを開いてください。")
+            st.success("🎯 スター全単語の一括クイズを開始しました！「🎯 クイズを解く」タブを開いてください。")
             st.rerun()
             
     with col_st2:
-        if st.button("🗑️ スター選択をすべてクリア", use_container_width=True, disabled=(current_star_count == 0)):
+        if st.button("🗑️ 現在のスター選択のみクリア", use_container_width=True, disabled=(current_star_count == 0)):
             st.session_state.starred_words = set()
             save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
-            st.success("スター選択をクリアしました。")
+            st.success("現在のスター選択をクリアしました。")
             st.rerun()
 
     st.markdown("---")
@@ -817,6 +847,15 @@ with tab_stars:
     if not saved_lists:
         st.info("💡 保存されたリストはまだありません。上記のフォームから好きな名前で保存できます！")
     else:
+        # NEW BUTTON: Bulk load ALL saved lists into active starred words!
+        if st.button("📥 保存済みの全リストの単語を一括でスターに読み込む", use_container_width=True):
+            for word_nos in saved_lists.values():
+                st.session_state.starred_words.update(word_nos)
+            save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
+            st.success("すべての保存済みリストの単語を現在のスターに追加しました！")
+            st.rerun()
+            
+        st.write("")
         for list_name, word_nos in list(saved_lists.items()):
             with st.expander(f"📁 {list_name} ({len(word_nos)}問)"):
                 # Word preview
