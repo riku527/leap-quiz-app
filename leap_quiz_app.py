@@ -4,13 +4,13 @@ import json
 import random
 import os
 
+# Helper to ensure HTML string has no leading indentation (prevents markdown code-block bug)
 def clean_html(html_str):
-    return "\n".join(line.strip() for line in html_str.splitlines() if line.strip())
-
+    return textwrap.dedent(html_str).strip()
 
 # Streamlit Page Configuration
 st.set_page_config(
-    page_title="LEAP 英単語 4択クイズ & スター管理",
+    page_title="LEAP 英単語 4択クイズ & LEAP小テスト",
     page_icon="🎯",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -151,10 +151,205 @@ def load_vocab_data():
 
 vocab_db = load_vocab_data()
 
-# Custom CSS Styling
-st.markdown(clean_html("""
+# Custom Responsive CSS Styling for Desktop PC & Mobile Smartphones
+css_style = clean_html("""
+    <style>
+        /* Top padding and centering container for both Desktop PC and Mobile */
+        .block-container {
+            padding-top: 3.5rem !important;
+            padding-bottom: 2.5rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: 720px !important;
+            margin: 0 auto !important;
+        }
 
-"""), unsafe_allow_html=True)
+        /* Streamlit Tab Header Responsive Styling */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 6px !important;
+            justify-content: center !important;
+        }
+        .stTabs [data-baseweb="tab"] {
+            padding: 8px 16px !important;
+            font-size: clamp(0.85rem, 2.5vw, 1.0rem) !important;
+            font-weight: 600 !important;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        /* Main Titles */
+        .main-title {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.02em;
+        }
+        .sub-title {
+            font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+            color: #64748B;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Settings Summary Badges */
+        .setting-badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+        .setting-badge {
+            background-color: #F1F5F9;
+            color: #334155;
+            border: 1px solid #CBD5E1;
+            font-size: 0.8rem;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        /* Resume Banner Box */
+        .resume-box {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border: 2px solid #3B82F6;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+        }
+
+        /* Question Card Box */
+        .card-box {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 2px solid #E2E8F0;
+            border-radius: 18px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -2px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+        @media (max-width: 640px) {
+            .card-box {
+                padding: 16px 14px;
+                margin-bottom: 12px;
+                border-radius: 14px;
+            }
+        }
+        .q-number {
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+            font-weight: 700;
+            color: #2563EB;
+            background-color: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .mode-badge {
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            color: #059669;
+            font-weight: 600;
+            background-color: #ECFDF5;
+            border: 1px solid #A7F3D0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .q-prompt {
+            font-size: clamp(1.5rem, 5.5vw, 2.4rem);
+            font-weight: 800;
+            color: #0F172A;
+            margin: 10px 0 6px 0;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+        .ipa-text {
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+            color: #475569;
+            font-family: serif, sans-serif;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+        /* Option Buttons Touch & Hover Style */
+        .stButton > button {
+            border-radius: 12px !important;
+            font-size: clamp(0.95rem, 2.8vw, 1.1rem) !important;
+            font-weight: 600 !important;
+            padding: 12px 16px !important;
+            min-height: 52px !important;
+            width: 100% !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03) !important;
+            transition: all 0.15s ease-in-out !important;
+        }
+        .stButton > button:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15) !important;
+        }
+
+        /* Etymology Box */
+        .etym-box {
+            background-color: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            color: #78350F;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            margin-top: 10px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        /* Score & Stats Cards */
+        .score-banner {
+            background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+            color: white;
+            padding: clamp(20px, 5vw, 32px);
+            border-radius: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        .stat-card {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .stat-value {
+            font-size: clamp(1.5rem, 4vw, 2.0rem);
+            font-weight: 800;
+            color: #2563EB;
+        }
+        .stat-label {
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        /* List Cards in Star Tab */
+        .list-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+    </style>
+""")
+st.markdown(css_style, unsafe_allow_html=True)
 
 # Audio button helper
 def render_audio_button(text):
@@ -440,9 +635,17 @@ with tab_quiz:
         saved_range = f"No.{saved_settings_meta.get('start_no', start_no)} ～ No.{saved_settings_meta.get('end_no', end_no)}"
         
         if 0 <= saved_idx < saved_total:
-            st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+            resume_html = clean_html(f"""
+                <div class='resume-box'>
+                    <h3 style='margin: 0 0 10px 0; color: #1E3A8A;'>⏯️ 前回の解き途中データがあります</h3>
+                    <div style='text-align: left; background: white; padding: 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.95rem; color: #334155;'>
+                        ・<b>出題モード</b>: {saved_mode}<br>
+                        ・<b>出題範囲</b>: {saved_range}<br>
+                        ・<b>現在の進捗</b>: 第 <b>{saved_idx + 1}</b> 問 / 全 {saved_total} 問 (現在 <b>{saved_score}</b> 問正解)
+                    </div>
+                </div>
+            """)
+            st.markdown(resume_html, unsafe_allow_html=True)
             
             col_res1, col_res2 = st.columns(2)
             with col_res1:
@@ -488,9 +691,14 @@ f
         st.warning(f"指定された範囲 (No.{start_no} ～ No.{end_no}) に該当する単語データがありません。設定を確認してください。")
     else:
         # Settings summary badge
-        st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+        badge_html = clean_html(f"""
+            <div class='setting-badge-container'>
+                <span class='setting-badge'>範囲: No.{start_no} ～ No.{end_no}</span>
+                <span class='setting-badge'>順序: {order_option}</span>
+                <span class='setting-badge'>モード: {direction_option}</span>
+            </div>
+        """)
+        st.markdown(badge_html, unsafe_allow_html=True)
 
         current_idx = st.session_state.current_idx
 
@@ -498,9 +706,13 @@ f
         if current_idx >= total_questions:
             clear_progress()
             accuracy = (st.session_state.score / total_questions) * 100 if total_questions > 0 else 0
-            st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+            score_html = clean_html(f"""
+                <div class='score-banner'>
+                    <h2 style='font-size: clamp(1.4rem, 4vw, 2.0rem); margin-bottom: 8px;'>🎉 全問題が終了しました！</h2>
+                    <p style='font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 0;'>正解率: <b>{accuracy:.1f}%</b> ({st.session_state.score} / {total_questions} 問)</p>
+                </div>
+            """)
+            st.markdown(score_html, unsafe_allow_html=True)
             
             wrong_item_nos = []
             for idx, item in enumerate(quiz_items):
@@ -567,14 +779,14 @@ f
                     save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
                     st.rerun()
 
-            # IPA HTML rendered INSIDE the card box only when showing IPA and question is English -> Japanese (is_en_to_ja is True)
-            is_en_to_ja_mode = item.get("is_en_to_ja", item.get("mode") == "英語 ➔ 日本語" or "英➔日" in item.get("mode", ""))
+            # IPA HTML rendered INSIDE the card box ONLY when is_en_to_ja is True (showing English to answer Japanese)
+            is_en_to_ja_mode = item.get("is_en_to_ja", False)
             ipa_display_html = f"<div class='ipa-text'>[ {item['ipa']} ]</div>" if (show_ipa and is_en_to_ja_mode) else ""
 
             prompt_title_html = f"<div style='font-size: clamp(0.85rem, 2.5vw, 1.0rem); color:#1E3A8A; font-weight:700; margin-top:6px; margin-bottom:6px;'>{item['prompt_title']}</div>" if item.get("prompt_title") else ""
             formatted_prompt = item['prompt'].replace('\n', '<br>')
 
-            # Question Card Box (using dedent to prevent markdown from rendering raw HTML as code block)
+            # Question Card Box (using clean_html to prevent markdown code block rendering)
             card_html = clean_html(f"""
                 <div class='card-box'>
                     <div style='display: flex; justify-content: space-between; align-items: center;'>
@@ -585,7 +797,7 @@ f
                     <div class='q-prompt'>{formatted_prompt}</div>
                     {ipa_display_html}
                 </div>
-            """).strip()
+            """)
             st.markdown(card_html, unsafe_allow_html=True)
 
             # Audio playback button
@@ -645,9 +857,12 @@ f
                         st.write(f"・**発音記号**: {item['ipa']}")
                     st.write(f"・**意味**: {item['ja']}")
                     if item.get("etymology"):
-                        st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+                        etym_html = clean_html(f"""
+                            <div class='etym-box'>
+                                💡 <b>語源・成り立ち:</b><br>{item['etymology']}
+                            </div>
+                        """)
+                        st.markdown(etym_html, unsafe_allow_html=True)
 
             # Navigation Buttons (Previous & Next)
             col_nav1, col_nav2 = st.columns(2)
@@ -819,17 +1034,29 @@ with tab_analytics:
         # Summary Metrics
         col_m1, col_m2, col_m3 = st.columns(3)
         with col_m1:
-            st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+            stat_1_html = clean_html(f"""
+                <div class='stat-card'>
+                    <div class='stat-value'>{total_attempts_all}</div>
+                    <div class='stat-label'>総解答数</div>
+                </div>
+            """)
+            st.markdown(stat_1_html, unsafe_allow_html=True)
         with col_m2:
-            st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+            stat_2_html = clean_html(f"""
+                <div class='stat-card'>
+                    <div class='stat-value' style='color:#DC2626;'>{len([k for k, v in mistakes_data.items() if v['wrong'] > 0])}</div>
+                    <div class='stat-label'>苦手登録単語数</div>
+                </div>
+            """)
+            st.markdown(stat_2_html, unsafe_allow_html=True)
         with col_m3:
-            st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+            stat_3_html = clean_html(f"""
+                <div class='stat-card'>
+                    <div class='stat-value' style='color:#059669;'>{overall_accuracy:.1f}%</div>
+                    <div class='stat-label'>通算正解率</div>
+                </div>
+            """)
+            st.markdown(stat_3_html, unsafe_allow_html=True)
 
         st.markdown("---")
         st.subheader("🔥 苦手単語ワーストランキング")
@@ -874,9 +1101,17 @@ f
                     err_rate = (wrong_cnt / total_cnt) * 100
                     ipa_str = f" [ {info.get('ipa', '')} ]" if info.get('ipa') else ""
                     
-                    st.markdown(clean_html(f"""
-f
-"""), unsafe_allow_html=True)
+                    rank_html = clean_html(f"""
+                        <div style='background-color:#FFF5F5; border-left:4px solid #EF4444; padding:10px 14px; border-radius:8px; margin-bottom:8px;'>
+                            <div style='display:flex; justify-content:space-between; align-items:center;'>
+                                <b style='color:#991B1B;'>第 {rank} 位 (No.{word_no}) : {info['en']}{ipa_str}</b>
+                                <span style='background-color:#FEE2E2; color:#991B1B; padding:2px 8px; border-radius:12px; font-size:0.8rem; font-weight:700;'>ミス {wrong_cnt} 回</span>
+                            </div>
+                            <div style='color:#4B5563; font-size:0.9rem; margin-top:4px;'>意味: {info['ja']}</div>
+                            <div style='color:#6B7280; font-size:0.8rem; margin-top:2px;'>誤答率: {err_rate:.0f}% ({wrong_cnt}/{total_cnt}回)</div>
+                        </div>
+                    """)
+                    st.markdown(rank_html, unsafe_allow_html=True)
 
         st.markdown("---")
         if st.button("🗑️ 苦手・解答データをリセットする", use_container_width=True):
