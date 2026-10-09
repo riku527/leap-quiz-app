@@ -5,32 +5,65 @@ import os
 
 # Streamlit Page Configuration
 st.set_page_config(
-    page_title="LEAP 英単語 4択クイズ & 苦手分析",
+    page_title="LEAP 英単語 4択クイズ & スター管理",
     page_icon="🎯",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
 
-# Persistent Storage Helpers
+# Persistent Storage Helper Files
 STAR_FILE = "starred_words.json"
 PROGRESS_FILE = "quiz_progress.json"
 MISTAKES_FILE = "mistake_history.json"
+SETTINGS_FILE = "settings.json"
 
-def load_starred_words():
+# --- Data Loaders / Savers ---
+def load_settings():
+    defaults = {
+        "start_no": 1451,
+        "end_no": 1700,
+        "order_option": "番号順",
+        "direction_option": "英語 ➔ 日本語",
+        "show_ipa": True
+    }
+    if os.path.exists(SETTINGS_FILE):
+        try:
+            with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                defaults.update(data)
+        except Exception:
+            pass
+    return defaults
+
+def save_settings(settings_dict):
+    try:
+        with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
+            json.dump(settings_dict, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+def load_starred_data():
+    """Returns (active_starred_set, saved_named_lists_dict)"""
     starred = set()
+    saved_lists = {}
     if os.path.exists(STAR_FILE):
         try:
             with open(STAR_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 starred = set(data.get("starred", []))
+                saved_lists = data.get("saved_lists", {})
         except Exception:
             pass
-    return starred
+    return starred, saved_lists
 
-def save_starred_words(starred_set):
+def save_starred_data(starred_set, saved_lists_dict):
     try:
         with open(STAR_FILE, "w", encoding="utf-8") as f:
-            json.dump({"starred": list(starred_set)}, f, ensure_ascii=False, indent=2)
+            data = {
+                "starred": sorted([int(x) for x in starred_set]),
+                "saved_lists": {k: [int(x) for x in v] for k, v in saved_lists_dict.items()}
+            }
+            json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception:
         pass
 
@@ -78,11 +111,9 @@ def record_answer_history(word_no, is_correct):
     mistakes = load_mistakes()
     if word_no not in mistakes:
         mistakes[word_no] = {"wrong": 0, "total": 0}
-    
     mistakes[word_no]["total"] += 1
     if not is_correct:
         mistakes[word_no]["wrong"] += 1
-        
     save_mistakes(mistakes)
 
 def clear_mistakes_history():
@@ -92,9 +123,14 @@ def clear_mistakes_history():
         except Exception:
             pass
 
-# Initialize Starred List with Persistence
-if "starred_words" not in st.session_state:
-    st.session_state.starred_words = load_starred_words()
+# Load Settings
+saved_settings = load_settings()
+
+# Initialize Session States
+if "starred_words" not in st.session_state or "saved_star_lists" not in st.session_state:
+    st_set, st_lists = load_starred_data()
+    st.session_state.starred_words = st_set
+    st.session_state.saved_star_lists = st_lists
 
 # Load Vocabulary Data from JSON
 @st.cache_data
@@ -251,6 +287,15 @@ st.markdown("""
         color: #64748B;
         font-weight: 600;
     }
+
+    .list-card {
+        background-color: #FFFFFF;
+        border: 1.5px solid #E2E8F0;
+        border-radius: 14px;
+        padding: 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -366,7 +411,7 @@ def prepare_quiz_items(start, end, order, direction, all_vocab, starred_nos=None
 
 # Header
 st.markdown("<div class='main-title'>必携 英単語 LEAP</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>🎯 4択英単語クイズ & 📊 苦手データ分析機能</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>🎯 4択英単語クイズ & ⭐ スターリスト管理</div>", unsafe_allow_html=True)
 
 if not vocab_db:
     st.error("⚠️ 単語データ (leap_words.json) が見つかりません。")
@@ -374,21 +419,65 @@ if not vocab_db:
 
 # Sidebar Configuration
 st.sidebar.header("⚙️ 出題条件・設定")
-start_no = st.sidebar.number_input("開始番号 (No.)", min_value=1, max_value=2300, value=1451)
-end_no = st.sidebar.number_input("終了番号 (No.)", min_value=1, max_value=2300, value=1700)
 
-order_option = st.sidebar.radio("出題順序", ["番号順", "ランダム（網羅的）"])
-direction_option = st.sidebar.radio(
-    "翻訳・出題モード", 
-    ["英語 ➔ 日本語", "日本語 ➔ 英語", "混合（英➔日・日➔英）"]
-)
+# Read from saved_settings to automatically fill start_no and end_no
+init_start = saved_settings.get("start_no", 1451)
+init_end = saved_settings.get("end_no", 1700)
+init_order = saved_settings.get("order_option", "番号順")
+init_direction = saved_settings.get("direction_option", "英語 ➔ 日本語")
+init_show_ipa = saved_settings.get("show_ipa", True)
+
+start_no = st.sidebar.number_input("開始番号 (No.)", min_value=1, max_value=2300, value=int(init_start))
+end_no = st.sidebar.number_input("終了番号 (No.)", min_value=1, max_value=2300, value=int(init_end))
+
+order_list = ["番号順", "ランダム（網羅的）"]
+order_idx = order_list.index(init_order) if init_order in order_list else 0
+order_option = st.sidebar.radio("出題順序", order_list, index=order_idx)
+
+dir_list = ["英語 ➔ 日本語", "日本語 ➔ 英語", "混合（英➔日・日➔英）"]
+dir_idx = dir_list.index(init_direction) if init_direction in dir_list else 0
+direction_option = st.sidebar.radio("翻訳・出題モード", dir_list, index=dir_idx)
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("👁️ 表示・復習オプション")
-show_ipa = st.sidebar.checkbox("🔤 発音記号を表示する", value=True)
-filter_starred = st.sidebar.checkbox(f"⭐ 要復習（スター選択中 {len(st.session_state.starred_words)}件）のみ", value=False)
+show_ipa = st.sidebar.checkbox("🔤 発音記号を表示する", value=bool(init_show_ipa))
+
+filter_starred = st.sidebar.checkbox(f"⭐ 範囲内の要復習（{len(st.session_state.starred_words)}件）のみ", value=False)
+
+# Sidebar Button: Review ALL Starred Words
+st.sidebar.markdown("---")
+st.sidebar.subheader("⭐ 全スター一括復習")
+if st.sidebar.button("⭐ 今までのスター単語を一括復習（全範囲）", use_container_width=True):
+    starred_all = list(st.session_state.starred_words)
+    if not starred_all:
+        st.sidebar.warning("スターに登録されている単語がありません。")
+    else:
+        save_settings({
+            "start_no": start_no,
+            "end_no": end_no,
+            "order_option": order_option,
+            "direction_option": direction_option,
+            "show_ipa": show_ipa
+        })
+        clear_progress()
+        st.session_state.quiz_items = prepare_quiz_items(
+            start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=starred_all
+        )
+        st.session_state.current_idx = 0
+        st.session_state.score = 0
+        st.session_state.user_answers = {}
+        st.session_state.quiz_started = True
+        st.rerun()
 
 if st.sidebar.button("🔄 クイズを再スタート / 設定反映", use_container_width=True):
+    # Automatically save entered range & settings
+    save_settings({
+        "start_no": start_no,
+        "end_no": end_no,
+        "order_option": order_option,
+        "direction_option": direction_option,
+        "show_ipa": show_ipa
+    })
     clear_progress()
     st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
     st.session_state.current_idx = 0
@@ -397,8 +486,8 @@ if st.sidebar.button("🔄 クイズを再スタート / 設定反映", use_cont
     st.session_state.quiz_started = True
     st.rerun()
 
-# --- Tab Layout: Quiz vs Analytics ---
-tab_quiz, tab_analytics = st.tabs(["🎯 クイズを解く", "📊 苦手分析・統計"])
+# --- Tab Layout: Quiz vs Star Management vs Analytics ---
+tab_quiz, tab_stars, tab_analytics = st.tabs(["🎯 クイズを解く", "⭐ スター・リスト保存", "📊 苦手分析・統計"])
 
 with tab_quiz:
     # Check for Saved Progress File on Disk
@@ -410,9 +499,9 @@ with tab_quiz:
         saved_idx = saved_progress.get("current_idx", 0)
         saved_score = saved_progress.get("score", 0)
         saved_total = len(saved_items)
-        saved_settings = saved_progress.get("settings", {})
-        saved_mode = saved_settings.get("direction_option", direction_option)
-        saved_range = f"No.{saved_settings.get('start_no', start_no)} ～ No.{saved_settings.get('end_no', end_no)}"
+        saved_settings_meta = saved_progress.get("settings", {})
+        saved_mode = saved_settings_meta.get("direction_option", direction_option)
+        saved_range = f"No.{saved_settings_meta.get('start_no', start_no)} ～ No.{saved_settings_meta.get('end_no', end_no)}"
         
         if 0 <= saved_idx < saved_total:
             st.markdown(f"""
@@ -438,6 +527,13 @@ with tab_quiz:
             with col_res2:
                 if st.button("🆕 最初からやり直す", use_container_width=True):
                     clear_progress()
+                    save_settings({
+                        "start_no": start_no,
+                        "end_no": end_no,
+                        "order_option": order_option,
+                        "direction_option": direction_option,
+                        "show_ipa": show_ipa
+                    })
                     st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
                     st.session_state.current_idx = 0
                     st.session_state.score = 0
@@ -445,10 +541,10 @@ with tab_quiz:
                     st.session_state.quiz_started = True
                     st.rerun()
             
-            # STOP here so Streamlit waits for user selection instead of auto-initializing a new quiz
+            # STOP here so Streamlit waits for user selection
             st.stop()
 
-    # Default Session State Initialization if no saved progress or user opted for new start
+    # Default Session State Initialization
     if "quiz_items" not in st.session_state:
         st.session_state.quiz_items = prepare_quiz_items(start_no, end_no, order_option, direction_option, vocab_db, st.session_state.starred_words, filter_starred)
         st.session_state.current_idx = 0
@@ -542,7 +638,7 @@ with tab_quiz:
                         st.session_state.starred_words.remove(item["no"])
                     else:
                         st.session_state.starred_words.add(item["no"])
-                    save_starred_words(st.session_state.starred_words)
+                    save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
                     st.rerun()
 
             # IPA HTML rendered INSIDE the card box
@@ -571,26 +667,23 @@ with tab_quiz:
                 btn_key = f"opt_{current_idx}_{opt_idx}"
                 label = f"{opt_idx + 1}. {option_text}"
                 
-                # Options disabled if this question has been answered
                 if st.button(label, key=btn_key, disabled=is_answered, use_container_width=True):
                     is_correct = (option_text == item["correct_ans"])
                     
-                    # Record mistake analytics
                     record_answer_history(item["no"], is_correct)
                     
                     if is_correct:
                         st.session_state.score += 1
                     else:
-                        # 間違えた問題は自動的にスター（要復習）に追加
+                        # Auto-add wrong words to active star list
                         st.session_state.starred_words.add(item["no"])
-                        save_starred_words(st.session_state.starred_words)
+                        save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
                         
                     st.session_state.user_answers[current_idx] = {
                         "choice": option_text,
                         "is_correct": is_correct
                     }
                     
-                    # Save progress for resume feature with full settings metadata
                     progress_data = {
                         "quiz_items": st.session_state.quiz_items,
                         "current_idx": st.session_state.current_idx,
@@ -664,7 +757,107 @@ with tab_quiz:
                         save_progress(progress_data)
                         st.rerun()
 
-# --- Tab 2: Analytics & Weakness Dashboard ---
+# --- Tab 2: Star Management & Named Lists ---
+with tab_stars:
+    st.subheader("⭐ スター単語 & 保存リスト管理")
+    
+    current_star_count = len(st.session_state.starred_words)
+    
+    # Section 1: All Starred Review Button
+    st.markdown("#### 1. 全スター単語の一括復習")
+    st.write(f"現在、スターに登録されている単語: **{current_star_count} 件**")
+    
+    col_st1, col_st2 = st.columns(2)
+    with col_st1:
+        if st.button("🚀 現在のスター単語を一括クイズ", type="primary", use_container_width=True, disabled=(current_star_count == 0)):
+            save_settings({
+                "start_no": start_no,
+                "end_no": end_no,
+                "order_option": order_option,
+                "direction_option": direction_option,
+                "show_ipa": show_ipa
+            })
+            clear_progress()
+            st.session_state.quiz_items = prepare_quiz_items(
+                start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=list(st.session_state.starred_words)
+            )
+            st.session_state.current_idx = 0
+            st.session_state.score = 0
+            st.session_state.user_answers = {}
+            st.success("🎯 スター単語の一括クイズを開始します！「🎯 クイズを解く」タブを開いてください。")
+            st.rerun()
+            
+    with col_st2:
+        if st.button("🗑️ スター選択をすべてクリア", use_container_width=True, disabled=(current_star_count == 0)):
+            st.session_state.starred_words = set()
+            save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
+            st.success("スター選択をクリアしました。")
+            st.rerun()
+
+    st.markdown("---")
+    
+    # Section 2: Save Current Stars with a Name
+    st.markdown("#### 2. 現在のスター単語に名前をつけて保存")
+    st.caption("区切り位置ごとにスターした単語群を名前を付けて保存しておけます（個数制限なし）。")
+    
+    list_name_input = st.text_input("リスト名を入力", placeholder="例: Part1 要復習リスト, No.1451-1500苦手")
+    if st.button("💾 名前を付けて保存する", use_container_width=True, disabled=(current_star_count == 0 or not list_name_input.strip())):
+        name = list_name_input.strip()
+        st.session_state.saved_star_lists[name] = sorted(list(st.session_state.starred_words))
+        save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
+        st.success(f"保存完了: 「{name}」（{current_star_count}単語）")
+        st.rerun()
+
+    st.markdown("---")
+    
+    # Section 3: Saved Star Lists Overview
+    st.markdown("#### 3. 保存済みスターリスト一覧")
+    
+    saved_lists = st.session_state.saved_star_lists
+    if not saved_lists:
+        st.info("💡 保存されたリストはまだありません。上記のフォームから好きな名前で保存できます！")
+    else:
+        for list_name, word_nos in list(saved_lists.items()):
+            with st.expander(f"📁 {list_name} ({len(word_nos)}問)"):
+                # Word preview
+                words_str = ", ".join([vocab_db[no]["en"] for no in word_nos[:8] if no in vocab_db])
+                if len(word_nos) > 8:
+                    words_str += f" など 計{len(word_nos)}問"
+                st.caption(f"登録単語: {words_str}")
+                
+                col_l1, col_l2, col_l3 = st.columns(3)
+                with col_l1:
+                    if st.button(f"🚀 テスト開始", key=f"start_list_{list_name}", use_container_width=True, type="primary"):
+                        save_settings({
+                            "start_no": start_no,
+                            "end_no": end_no,
+                            "order_option": order_option,
+                            "direction_option": direction_option,
+                            "show_ipa": show_ipa
+                        })
+                        clear_progress()
+                        st.session_state.quiz_items = prepare_quiz_items(
+                            start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=word_nos
+                        )
+                        st.session_state.current_idx = 0
+                        st.session_state.score = 0
+                        st.session_state.user_answers = {}
+                        st.success(f"「{list_name}」のテストを開始しました！「🎯 クイズを解く」タブを開いてください。")
+                        st.rerun()
+                with col_l2:
+                    if st.button(f"📥 スターに読込", key=f"load_list_{list_name}", use_container_width=True):
+                        st.session_state.starred_words.update(word_nos)
+                        save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
+                        st.success(f"「{list_name}」をスター単語に追加しました。")
+                        st.rerun()
+                with col_l3:
+                    if st.button(f"🗑️ リスト削除", key=f"del_list_{list_name}", use_container_width=True):
+                        del st.session_state.saved_star_lists[list_name]
+                        save_starred_data(st.session_state.starred_words, st.session_state.saved_star_lists)
+                        st.success(f"「{list_name}」を削除しました。")
+                        st.rerun()
+
+# --- Tab 3: Analytics & Weakness Dashboard ---
 with tab_analytics:
     st.subheader("📊 苦手データ分析・学習記録")
     
@@ -719,14 +912,22 @@ with tab_analytics:
             
             # Button to start quiz with top worst words directly
             if st.button(f"🔥 苦手ワースト単語（上位{len(top_wrong_nos)}問）を集中テストする", type="primary", use_container_width=True):
+                save_settings({
+                    "start_no": start_no,
+                    "end_no": end_no,
+                    "order_option": order_option,
+                    "direction_option": direction_option,
+                    "show_ipa": show_ipa
+                })
+                clear_progress()
                 st.session_state.quiz_items = prepare_quiz_items(
                     start_no, end_no, order_option, direction_option, vocab_db, only_target_nos=top_wrong_nos
                 )
                 st.session_state.current_idx = 0
                 st.session_state.score = 0
                 st.session_state.user_answers = {}
-                clear_progress()
                 st.success("🎯 苦手ワースト単語のテストをセットしました！「🎯 クイズを解く」タブを開いてスタートしてください。")
+                st.rerun()
 
             st.write("")
             for rank, (word_no, stats) in enumerate(sorted_mistakes[:15], 1):
