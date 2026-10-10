@@ -30,7 +30,8 @@ def load_settings():
         "end_no": 1700,
         "order_option": "番号順",
         "direction_option": "英語 ➔ 日本語",
-        "show_ipa": True
+        "show_ipa": True,
+        "auto_speak": True
     }
     if os.path.exists(SETTINGS_FILE):
         try:
@@ -137,6 +138,9 @@ if "starred_words" not in st.session_state or "saved_star_lists" not in st.sessi
     st_set, st_lists = load_starred_data()
     st.session_state.starred_words = st_set
     st.session_state.saved_star_lists = st_lists
+
+if "auto_speak" not in st.session_state:
+    st.session_state.auto_speak = saved_settings.get("auto_speak", True)
 
 # Load Vocabulary Data from JSON
 @st.cache_data
@@ -352,16 +356,12 @@ css_style = clean_html("""
 """)
 st.markdown(css_style, unsafe_allow_html=True)
 
-# Audio button helper
-def render_audio_button(text):
+# Audio button helper with auto-speak support
+def render_audio_button(text, auto_play=False):
+    auto_trigger = "speakNow();" if auto_play else ""
     js_code = f"""
     <div style="display: flex; justify-content: center; margin-top: 4px; margin-bottom: 8px;">
-        <button onclick="
-            const msg = new SpeechSynthesisUtterance('{text}');
-            msg.lang = 'en-US';
-            msg.rate = 0.9;
-            window.speechSynthesis.speak(msg);
-        " style="
+        <button onclick="speakNow();" style="
             background-color: #3B82F6;
             color: white;
             border: none;
@@ -373,12 +373,25 @@ def render_audio_button(text):
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
         ">
             🔊 発音を聞く
         </button>
     </div>
+    <script>
+        function speakNow() {{
+            if ('speechSynthesis' in window) {{
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance('{text}');
+                msg.lang = 'en-US';
+                msg.rate = 0.9;
+                window.speechSynthesis.speak(msg);
+            }}
+        }}
+        {auto_trigger}
+    </script>
     """
-    st.components.v1.html(js_code, height=45)
+    st.components.v1.html(clean_html(js_code), height=45)
 
 # Smart Distractor Selector Function
 def get_similar_distractors(target_no, mode_type, all_vocab, num_distractors=3):
@@ -567,6 +580,9 @@ st.sidebar.markdown("---")
 st.sidebar.subheader("👁️ 表示・復習オプション")
 show_ipa = st.sidebar.checkbox("🔤 発音記号を表示する", value=bool(init_show_ipa))
 
+sidebar_auto_speak = st.sidebar.checkbox("🔊 問題表示時に単語を自動読み上げ", value=bool(st.session_state.get("auto_speak", True)))
+st.session_state.auto_speak = sidebar_auto_speak
+
 filter_starred = st.sidebar.checkbox(f"⭐ 範囲内の要復習（{len(st.session_state.starred_words)}件）のみ", value=False)
 
 # Helper function to combine current active stars and all saved star lists
@@ -589,7 +605,8 @@ if st.sidebar.button(f"⭐ 今までのスター単語を一括復習（計 {len
             "end_no": end_no,
             "order_option": order_option,
             "direction_option": direction_option,
-            "show_ipa": show_ipa
+            "show_ipa": show_ipa,
+            "auto_speak": st.session_state.auto_speak
         })
         clear_progress()
         st.session_state.quiz_items = prepare_quiz_items(
@@ -766,12 +783,25 @@ with tab_quiz:
             st.progress(progress_val)
             st.caption(f"第 {current_idx + 1} 問 / 全 {total_questions} 問  ｜  現在の正解数: {st.session_state.score} 問")
 
-            # Star Button Toggle Top Bar
+            # Star Button & Auto-Speak Toggle Control Bar
             is_starred = item["no"] in st.session_state.starred_words
-            star_label = "⭐ 要復習から外す" if is_starred else "☆ スターを付ける (要復習)"
+            star_label = "⭐ 要復習解除" if is_starred else "☆ スター追加"
             
-            col_star1, col_star2 = st.columns(2)
-            with col_star2:
+            col_ctrl1, col_ctrl2 = st.columns(2)
+            with col_ctrl1:
+                auto_speak_chk = st.checkbox("🔊 自動読み上げ", value=bool(st.session_state.get("auto_speak", True)), key=f"auto_speak_active_{current_idx}")
+                if auto_speak_chk != st.session_state.auto_speak:
+                    st.session_state.auto_speak = auto_speak_chk
+                    save_settings({
+                        "start_no": start_no,
+                        "end_no": end_no,
+                        "order_option": order_option,
+                        "direction_option": direction_option,
+                        "show_ipa": show_ipa,
+                        "auto_speak": auto_speak_chk
+                    })
+                    st.rerun()
+            with col_ctrl2:
                 if st.button(star_label, key=f"star_btn_{item['no']}"):
                     if is_starred:
                         st.session_state.starred_words.remove(item["no"])
@@ -802,7 +832,7 @@ with tab_quiz:
             st.markdown(card_html, unsafe_allow_html=True)
 
             # Audio playback button
-            render_audio_button(item["en"])
+            render_audio_button(item["en"], auto_play=st.session_state.auto_speak)
 
             st.write("▼ 正しい選択肢をタップしてください：")
 
